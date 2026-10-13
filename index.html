@@ -143,14 +143,6 @@
   tbody tr:hover{background:rgba(255,255,255,.03)}
   td strong{color:#fff}
 
-  /* ============================================================ TIMELINE */
-  .timeline{position:relative;max-width:820px;margin:0 auto;padding-left:40px}
-  .timeline::before{content:"";position:absolute;left:12px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--fire-1),var(--fire-3),transparent)}
-  .tl-item{position:relative;margin-bottom:34px}
-  .tl-item::before{content:"";position:absolute;left:-34px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--bg-0);border:3px solid var(--fire-2);box-shadow:0 0 0 4px rgba(232,93,4,.12)}
-  .tl-item h4{margin-bottom:4px}
-  .tl-item p{font-size:.92rem;color:var(--txt-2)}
-
   /* ============================================================ ACCORDION */
   .acc{border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;margin-bottom:12px;background:var(--bg-1)}
   .acc-head{width:100%;text-align:left;background:none;border:0;color:#fff;font-family:inherit;padding:18px 22px;font-size:1rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:.2s}
@@ -228,9 +220,8 @@
       <li><a href="#ftc">FTC</a></li>
       <li><a href="#areas">Áreas</a></li>
       <li><a href="#equipo">El Equipo</a></li>
-      <li><a href="#programacion">Programación</a></li>
       <li><a href="#recursos">Recursos</a></li>
-      <li><a href="programacion.html" class="cta">Guía Avanzada</a></li>
+      <li><a href="programacion.html" class="cta">Guía de Programación</a></li>
     </ul>
   </div>
 </nav>
@@ -249,7 +240,7 @@
       </p>
       <div class="hero-actions">
         <a href="#first" class="btn btn-primary">Comenzar la guía →</a>
-        <a href="#programacion" class="btn btn-ghost">Ir a Programación</a>
+        <a href="programacion.html" class="btn btn-ghost">Ir a Programación</a>
       </div>
       <div class="hero-stats">
         <div class="hero-stat"><strong>37700</strong><span>Nuestro Equipo</span></div>
@@ -485,88 +476,46 @@
       </div>
     </div>
 
-    <!-- Todas las áreas (incluyendo las futuras) -->
+    <!-- Otras áreas comunes en equipos FTC -->
     <h3 class="reveal" style="margin-bottom:22px;display:flex;align-items:center;gap:12px">
-      <span style="font-size:1.6rem">🤖</span> Lado del Robot <span style="color:var(--txt-2);font-weight:400;font-size:.85rem">(Técnico)</span>
+      <span style="font-size:1.6rem">📋</span> Otras áreas comunes en equipos FTC
     </h3>
-    <div class="grid g-4 reveal" style="margin-bottom:70px">
+    <p class="reveal" style="color:var(--txt-2);font-size:.95rem;margin-bottom:30px;max-width:700px">
+      Estas son divisiones de trabajo que existen en muchos equipos de FTC, pero que actualmente
+      <strong style="color:#fff">no forman parte de la estructura oficial de Volkaniks 37700</strong>.
+      Las incluimos como referencia para que conozcas el panorama completo.
+    </p>
+    <div class="grid g-3 reveal">
       <div class="card">
         <div class="card-icon">✏️</div>
-        <h4>Diseño <span class="chip info">Futura</span></h4>
+        <h4>Diseño</h4>
         <p>Diseñar el robot con bocetos o software CAD (Onshape, Fusion 360). Prototipar mecanismos antes de fabricarlos.</p>
       </div>
       <div class="card">
-        <div class="card-icon">🔧</div>
-        <h4>Mecánica <span class="chip new">Activa</span></h4>
-        <p>Fabricar y ensamblar las piezas del robot. Construir los mecanismos, chasis y sistemas de recolección.</p>
-      </div>
-      <div class="card">
         <div class="card-icon">🔌</div>
-        <h4>Electrónica <span class="chip info">Futura</span></h4>
+        <h4>Electrónica</h4>
         <p>Gestionar el tablero eléctrico, cableado, baterías, Control Hub y todas las conexiones del robot.</p>
       </div>
       <div class="card">
-        <div class="card-icon">💻</div>
-        <h4>Programación <span class="chip new">Activa</span></h4>
-        <p>Escribir el código que controla motores, sensores y servos. Crear rutinas autónomas y de TeleOp.</p>
-      </div>
-    </div>
-
-    <h3 class="reveal" style="margin-bottom:22px;display:flex;align-items:center;gap:12px">
-      <span style="font-size:1.6rem">📋</span> Lado de Logística <span style="color:var(--txt-2);font-weight:400;font-size:.85rem">(No Técnico)</span>
-    </h3>
-    <div class="grid g-3 reveal">
-      <div class="card">
-        <div class="card-icon">📣</div>
-        <h4>Negocios / Comunicación <span class="chip new">Activa</span></h4>
-        <p>Redes sociales, sitio web, boletines y envíos para premios. La cara pública del equipo.</p>
-      </div>
-      <div class="card">
         <div class="card-icon">🎥</div>
-        <h4>Audiovisual <span class="chip info">Futura</span></h4>
+        <h4>Audiovisual</h4>
         <p>Fotografía, video, diseño gráfico y documentación visual de toda la temporada.</p>
       </div>
       <div class="card">
         <div class="card-icon">🌍</div>
-        <h4>Alcance Comunitario <span class="chip info">Futura</span></h4>
+        <h4>Alcance Comunitario</h4>
         <p>Eventos para difundir FIRST y STEM en la comunidad. Outreach y vinculación.</p>
       </div>
       <div class="card">
         <div class="card-icon">♟️</div>
-        <h4>Estrategia <span class="chip info">Futura</span></h4>
+        <h4>Estrategia</h4>
         <p>Analizar datos de partidas, scouts de otros equipos y seleccionar aliados para playoffs.</p>
       </div>
       <div class="card">
         <div class="card-icon">📓</div>
-        <h4>Documentación <span class="chip info">Futura</span></h4>
+        <h4>Documentación</h4>
         <p>Mantener el Cuaderno de Ingeniería actualizado. Registra todo el proceso del equipo.</p>
       </div>
-      <div class="card">
-        <div class="card-icon">💰</div>
-        <h4>Finanzas / Sponsors <span class="chip new">Activa</span></h4>
-        <p>Búsqueda de patrocinios, gestión de presupuesto y relación con aliados del equipo.</p>
-      </div>
-    </div>
-
-    <!-- Tabla resumen -->
-    <div class="table-wrap reveal" style="margin-top:60px">
-      <table>
-        <thead>
-          <tr><th>Subárea</th><th>Rama</th><th>Responsabilidad Principal</th><th>Estado</th></tr>
-        </thead>
-        <tbody>
-          <tr><td><strong>Programación</strong></td><td>Técnico</td><td>Código del robot (autónomo + TeleOp)</td><td><span class="chip new">Activa</span></td></tr>
-          <tr><td><strong>Mecánica</strong></td><td>Técnico</td><td>Fabricación y ensamble</td><td><span class="chip new">Activa</span></td></tr>
-          <tr><td><strong>Negocios / Comunicación</strong></td><td>Logística</td><td>Redes y presencia pública</td><td><span class="chip new">Activa</span></td></tr>
-          <tr><td><strong>Finanzas / Sponsors</strong></td><td>Logística</td><td>Patrocinios y presupuesto</td><td><span class="chip new">Activa</span></td></tr>
-          <tr><td><strong>Diseño</strong></td><td>Técnico</td><td>Bocetos y CAD del robot</td><td><span class="chip info">Futura</span></td></tr>
-          <tr><td><strong>Electrónica</strong></td><td>Técnico</td><td>Cableado y tablero eléctrico</td><td><span class="chip info">Futura</span></td></tr>
-          <tr><td><strong>Audiovisual</strong></td><td>Logística</td><td>Foto, video y diseño</td><td><span class="chip info">Futura</span></td></tr>
-          <tr><td><strong>Outreach</strong></td><td>Logística</td><td>Eventos comunitarios</td><td><span class="chip info">Futura</span></td></tr>
-          <tr><td><strong>Estrategia</strong></td><td>Logística</td><td>Análisis y selección de alianzas</td><td><span class="chip info">Futura</span></td></tr>
-          <tr><td><strong>Documentación</strong></td><td>Logística</td><td>Cuaderno de Ingeniería</td><td><span class="chip info">Futura</span></td></tr>
-        </tbody>
-      </table>
     </div>
   </div>
 </section>
@@ -585,7 +534,6 @@
 
     <div class="split reveal">
       <div class="split-media" style="text-align:center">
-        <!-- Imagen del capítulo 4: Puedes reemplazarla con una foto del equipo -->
         <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80" alt="Equipo Volkaniks trabajando" loading="lazy">
         <p style="margin-top:12px;font-size:.78rem;color:var(--txt-2)">
           Reemplaza esta imagen con una foto real del equipo Volkaniks 37700.
@@ -661,242 +609,16 @@
   </div>
 </section>
 
-<!-- ============================================================ SECCIÓN 5: PROGRAMACIÓN -->
-<section id="programacion" class="prog-section">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">⭐ Guía de Programación</span>
-      <h2>Área de <span class="grad">Programación</span></h2>
-      <p class="lead">
-        Esta sección es para ti, que te integras al subequipo de programación.
-        Hemos dividido la guía en dos rutas según tu nivel de experiencia previa.
-      </p>
-    </div>
-
-    <div class="prog-banner reveal">
-      <span class="big">💡</span>
-      <div>
-        <strong style="color:#fff;font-size:1.05rem">La programación es el puente entre la idea y el movimiento</strong>
-        <p style="margin-top:4px">Sin código, el robot es solo metal y cables. Tú le das vida.</p>
-      </div>
-    </div>
-
-    <!-- ¿Qué hace el subequipo? -->
-    <div class="grid g-2 reveal" style="margin-bottom:50px">
-      <div class="card">
-        <div class="card-icon">🎯</div>
-        <h3>¿Qué hace el subárea de programación?</h3>
-        <p>
-          Creamos la <strong style="color:#fff">lógica que conecta los controles del operador con
-          los motores y sensores del robot</strong>. Escribimos tanto las rutinas autónomas
-          (sin control humano) como todas las funciones automatizadas del robot.
-        </p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🧠</div>
-        <h3>Herramientas de programación en FTC</h3>
-        <p>FIRST ofrece <strong style="color:#fff">tres herramientas</strong> para programar tu robot:</p>
-        <ul>
-          <li><strong style="color:#fff">Blocks:</strong> Visual (arrastrar y soltar). Ideal para empezar.</li>
-          <li><strong style="color:#fff">OnBot Java:</strong> Texto (Java). Intermedio.</li>
-          <li><strong style="color:#fff">Android Studio:</strong> Java profesional. Avanzado.</li>
-        </ul>
-        <p style="margin-top:10px;font-size:.88rem;color:var(--txt-2)">
-          <strong style="color:var(--fire-3)">Nota:</strong> Dado que necesitamos nivelar
-          rápido al equipo, recomendamos <strong style="color:#fff">saltar directamente a Android Studio</strong>
-          si ya tienes bases de Java, o empezar con Blocks y transicionar rápido.
-        </p>
-      </div>
-    </div>
-
-    <!-- RUTA 1: Sin experiencia -->
-    <h3 class="reveal" style="margin:60px 0 30px;display:flex;align-items:center;gap:12px">
-      <span style="font-size:1.6rem">🟢</span> Ruta 1: Sin experiencia previa (empieza desde cero)
-    </h3>
-    <div class="prog-banner reveal" style="background:linear-gradient(135deg,rgba(34,197,94,.1),rgba(11,114,133,.05));border-color:rgba(34,197,94,.3)">
-      <span class="big">📘</span>
-      <div>
-        <strong style="color:#fff">Si nunca has programado, esta es tu ruta.</strong>
-        <p style="margin-top:4px">Recomendamos empezar con <strong style="color:#fff">Blocks</strong> para entender los conceptos básicos rápidamente, y luego dar el salto a <strong style="color:#fff">OnBot Java</strong> o <strong style="color:#fff">Android Studio</strong>.</p>
-      </div>
-    </div>
-
-    <div class="timeline reveal" style="margin-bottom:60px">
-      <div class="tl-item">
-        <h4>Paso 1 · Familiarízate con la interfaz de Blocks</h4>
-        <p>Explora la herramienta visual. Revisa los tutoriales oficiales de FTC Docs para entender cómo se conectan los bloques.</p>
-      </div>
-      <div class="tl-item">
-        <h4>Paso 2 · Practica en el simulador virtual FTC SIM</h4>
-        <p>Usa <strong style="color:#fff">FTC SIM</strong> (gratuito) para programar robots virtuales <em>sin necesidad del robot físico</em>. Ideal para practicar desde casa. <a href="https://www.pixelpad.io/ftcsim" target="_blank" rel="noopener">Ir a FTC SIM →</a></p>
-      </div>
-      <div class="tl-item">
-        <h4>Paso 3 · Tu primer Op Mode en el robot real</h4>
-        <p>Con ayuda del subequipo, sube tu primer programa TeleOp al Control Hub. Hacer que un motor gire es tu primer gran logro.</p>
-      </div>
-      <div class="tl-item">
-        <h4>Paso 4 · Salto directo a Android Studio (recomendado)</h4>
-        <p>Para nivelar rápido al equipo, te recomendamos <strong style="color:#fff">saltar directamente a Android Studio</strong> una vez que entiendas los conceptos básicos de Blocks. Aprenderás Java en el contexto real del robot, con la guía del subequipo.</p>
-      </div>
-      <div class="tl-item">
-        <h4>Paso 5 · Tu primer autónomo básico</h4>
-        <p>Aprende a programar un Op Mode autónomo que mueva el robot hacia adelante, gire y se detenga en una posición. Es el primer paso para competir en la fase autónoma.</p>
-      </div>
-    </div>
-
-    <!-- RUTA 2: Con experiencia -->
-    <h3 class="reveal" style="margin:60px 0 30px;display:flex;align-items:center;gap:12px">
-      <span style="font-size:1.6rem">🔵</span> Ruta 2: Con experiencia previa en Java (nivelación avanzada)
-    </h3>
-    <div class="prog-banner reveal" style="background:linear-gradient(135deg,rgba(59,130,246,.1),rgba(11,114,133,.05));border-color:rgba(59,130,246,.3)">
-      <span class="big">☕</span>
-      <div>
-        <strong style="color:#fff">Si ya sabes programar en Java, esta es tu ruta.</strong>
-        <p style="margin-top:4px">Ya conoces la sintaxis y la POO. Ahora hay que aplicar esos conocimientos al contexto específico de FTC.</p>
-      </div>
-    </div>
-
-    <div class="grid g-2 reveal" style="margin-bottom:50px">
-      <div class="card">
-        <div class="card-icon">📦</div>
-        <h4>1. Estructura de un Op Mode</h4>
-        <p>Aprende la estructura de una clase OpMode en FTC: <code>@TeleOp</code>, <code>@Autonomous</code>, <code>runOpMode()</code>, <code>init()</code>, <code>loop()</code>, <code>waitForStart()</code>.</p>
-        <p style="margin-top:8px;font-size:.85rem;color:var(--fire-3)">
-          📖 <a href="https://ftc-docs.firstinspires.org/en/latest/programming_resources/tutorial_specific/android_studio/creating_op_modes/Creating-and-Running-an-Op-Mode-(Android-Studio).html" target="_blank" rel="noopener">Doc oficial: Crear un Op Mode →</a>
-        </p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🎮</div>
-        <h4>2. Gamepad y control de motores</h4>
-        <p>Aprende a leer los joysticks y botones del gamepad (<code>gamepad1</code>, <code>gamepad2</code>) y a mapear esos valores a los motores del robot.</p>
-        <p style="margin-top:8px;font-size:.85rem;color:var(--fire-3)">
-          📖 <a href="https://ftc-docs.firstinspires.org/en/latest/programming_resources/tutorial_specific/android_studio/gamepad/Gamepad.html" target="_blank" rel="noopener">Doc oficial: Gamepad →</a>
-        </p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🔧</div>
-        <h4>3. Hardware: motores, servos y sensores</h4>
-        <p>Aprende a declarar y configurar <code>DcMotor</code>, <code>Servo</code>, <code>ColorSensor</code>, <code>DistanceSensor</code> e <code>IMU</code> en el hardwareMap.</p>
-        <p style="margin-top:8px;font-size:.85rem;color:var(--fire-3)">
-          📖 <a href="https://ftc-docs.firstinspires.org/en/latest/hardware_and_software_configuration/index.html" target="_blank" rel="noopener">Doc oficial: Hardware →</a>
-        </p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🧭</div>
-        <h4>4. Encoders y movimiento preciso</h4>
-        <p>Usa encoders para medir distancia recorrida y controlar la velocidad. Aprende a calcular ticks por pulgada y a usar <code>setTargetPosition()</code>.</p>
-        <p style="margin-top:8px;font-size:.85rem;color:var(--fire-3)">
-          📖 <a href="https://ftc-docs.firstinspires.org/en/latest/programming_resources/encoders/Encoders.html" target="_blank" rel="noopener">Doc oficial: Encoders →</a>
-        </p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🤖</div>
-        <h4>5. Tu primer autónomo básico</h4>
-        <p>Combina encoders + IMU para mover el robot en una trayectoria: avanzar X pulgadas, girar Y grados, avanzar Z pulgadas y detenerse.</p>
-        <p style="margin-top:8px;font-size:.85rem;color:var(--fire-3)">
-          📖 <a href="https://ftc-docs.firstinspires.org/en/latest/programming_resources/tutorial_specific/android_studio/autonomous/Autonomous.html" target="_blank" rel="noopener">Doc oficial: Autónomo →</a>
-        </p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🏗️</div>
-        <h4>6. Road Runner (siguiente paso)</h4>
-        <p>Cuando domines el autónomo básico, aprende <strong style="color:#fff">Road Runner</strong>, la librería estándar de FTC para planificación de trayectorias. Es el siguiente nivel.</p>
-        <p style="margin-top:8px;font-size:.85rem;color:var(--fire-3)">
-          📖 <a href="https://rr.brott.dev/" target="_blank" rel="noopener">Documentación de Road Runner →</a>
-        </p>
-      </div>
-    </div>
-
-    <!-- FTC SIM -->
-    <div class="prog-banner reveal" style="margin-top:50px">
-      <span class="big">🖥️</span>
-      <div>
-        <strong style="color:#fff;font-size:1.05rem">FTC SIM — Simulador virtual gratuito</strong>
-        <p style="margin-top:6px">
-          FIRST Canada ofrece un simulador virtual gratuito que te permite programar robots
-          virtuales <strong style="color:#fff">sin necesidad del robot físico</strong>.
-          Incluye robots pre-diseñados, desafíos progresivos y sensores virtuales.
-        </p>
-        <a href="https://www.pixelpad.io/ftcsim" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:14px;font-size:.9rem">
-          Abrir FTC SIM →
-        </a>
-      </div>
-    </div>
-
-    <!-- Consejos -->
-    <h3 class="reveal" style="text-align:center;margin:70px 0 30px">Consejos para tu primer día</h3>
-    <div class="grid g-3 reveal">
-      <div class="card"><div class="card-icon">1</div><h4>No tengas miedo</h4><p>El código se puede cambiar; nada es permanente. Experimenta sin miedo.</p></div>
-      <div class="card"><div class="card-icon">2</div><h4>Pregunta todo</h4><p>No hay preguntas tontas cuando estás aprendiendo. Todos pasamos por ahí.</p></div>
-      <div class="card"><div class="card-icon">3</div><h4>Empieza con lo básico</h4><p>Hacer que un motor gire ya es un gran logro. Celebra cada avance.</p></div>
-      <div class="card"><div class="card-icon">4</div><h4>Documenta</h4><p>Anota cada bloque nuevo que uses. Te servirá después y ayudará al equipo.</p></div>
-      <div class="card"><div class="card-icon">5</div><h4>Practica en el simulador</h4><p>Cuando no tengas el robot, usa FTC SIM para seguir aprendiendo.</p></div>
-      <div class="card"><div class="card-icon">6</div><h4>Trabaja en equipo</h4><p>La programación en FTC es colaborativa. No estás solo en esto.</p></div>
-    </div>
-
-    <!-- Enlace a guía avanzada -->
-    <div class="reveal" style="text-align:center;margin-top:60px">
-      <div class="prog-banner" style="justify-content:center;text-align:center">
-        <div>
-          <strong style="color:#fff;font-size:1.1rem">📚 ¿Necesitas más detalle?</strong>
-          <p style="margin-top:6px">Tenemos una guía ampliada con documentación, ejemplos de código y siguientes pasos para programadores avanzados.</p>
-          <a href="programacion.html" class="btn btn-primary" style="margin-top:14px">Ir a la Guía Avanzada de Programación →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ SECCIÓN 6: RECURSOS -->
+<!-- ============================================================ SECCIÓN 5: RECURSOS GENERALES -->
 <section id="recursos">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow">Capítulo 06</span>
-      <h2>Recursos <span class="grad">Recomendados</span></h2>
-      <p class="lead">Todo lo que necesitas para empezar, en un solo lugar.</p>
+      <span class="eyebrow">Capítulo 05</span>
+      <h2>Recursos <span class="grad">Generales</span></h2>
+      <p class="lead">Enlaces útiles para cualquier miembro del equipo, sin importar su área.</p>
     </div>
 
     <div class="grid g-2 reveal">
-      <div class="res-card">
-        <span class="rc-icon">📚</span>
-        <div>
-          <h4>FTC Docs — Documentación oficial</h4>
-          <p>Guía completa sobre herramientas, programación, hardware y competencia.</p>
-          <code>ftc-docs.firstinspires.org</code>
-        </div>
-      </div>
-      <div class="res-card">
-        <span class="rc-icon">🖥️</span>
-        <div>
-          <h4>FTC SIM — Simulador virtual</h4>
-          <p>Programa robots virtuales en Blocks sin necesidad del robot físico.</p>
-          <code>pixelpad.io/ftcsim</code>
-        </div>
-      </div>
-      <div class="res-card">
-        <span class="rc-icon">⚙️</span>
-        <div>
-          <h4>REV Robotics — Hello Robot Guide</h4>
-          <p>Guía paso a paso para configurar y programar tu primer robot REV.</p>
-          <code>docs.revrobotics.com</code>
-        </div>
-      </div>
-      <div class="res-card">
-        <span class="rc-icon">🧩</span>
-        <div>
-          <h4>Tutorial de Blocks de FTC</h4>
-          <p>Tutorial oficial para aprender la herramienta visual desde cero.</p>
-          <code>ftc-docs.firstinspires.org/blocks</code>
-        </div>
-      </div>
-      <div class="res-card">
-        <span class="rc-icon">💾</span>
-        <div>
-          <h4>GitHub — FTC Robot Controller</h4>
-          <p>Código de ejemplo oficial del SDK de FTC. Ideal para estudiar.</p>
-          <code>github.com/FIRST-Tech-Challenge</code>
-        </div>
-      </div>
       <div class="res-card">
         <span class="rc-icon">🌐</span>
         <div>
@@ -906,19 +628,19 @@
         </div>
       </div>
       <div class="res-card">
-        <span class="rc-icon">🎮</span>
+        <span class="rc-icon">📚</span>
         <div>
-          <h4>Tutorial de Gamepad en FTC</h4>
-          <p>Aprende a mapear los controles del gamepad a los motores del robot.</p>
-          <code>ftc-docs.firstinspires.org/gamepad</code>
+          <h4>FTC Docs — Documentación oficial</h4>
+          <p>Guía completa sobre herramientas, hardware y competencia.</p>
+          <code>ftc-docs.firstinspires.org</code>
         </div>
       </div>
       <div class="res-card">
-        <span class="rc-icon">🏗️</span>
+        <span class="rc-icon">🔍</span>
         <div>
-          <h4>Road Runner — Trayectorias</h4>
-          <p>Librería estándar para planificación de trayectorias autónomas avanzadas.</p>
-          <code>rr.brott.dev</code>
+          <h4>Buscador de Eventos FTC</h4>
+          <p>Consulta los próximos eventos oficiales de FTC en México y el mundo.</p>
+          <code>ftc-events.firstinspires.org</code>
         </div>
       </div>
       <div class="res-card">
@@ -930,22 +652,30 @@
         </div>
       </div>
       <div class="res-card">
-        <span class="rc-icon">🔍</span>
+        <span class="rc-icon">💬</span>
         <div>
-          <h4>Buscador de Eventos FTC</h4>
-          <p>Consulta los próximos eventos oficiales de FTC en México y el mundo.</p>
-          <code>ftc-events.firstinspires.org</code>
+          <h4>Comunidad FTC (Discord)</h4>
+          <p>Foro oficial para resolver dudas con otros equipos.</p>
+          <code>discord.gg/firsttechchallenge</code>
+        </div>
+      </div>
+      <div class="res-card">
+        <span class="rc-icon">📖</span>
+        <div>
+          <h4>Game Manual 0</h4>
+          <p>Recurso no oficial pero muy completo para aprender FTC.</p>
+          <code>gm0.org</code>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ SECCIÓN 7: GLOSARIO -->
+<!-- ============================================================ SECCIÓN 6: GLOSARIO -->
 <section id="glosario" style="background:linear-gradient(180deg,var(--bg-0),var(--bg-1))">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow">Capítulo 07</span>
+      <span class="eyebrow">Capítulo 06</span>
       <h2>Glosario <span class="grad">Rápido</span></h2>
       <p class="lead">Los términos que escucharás todos los días en el taller.</p>
     </div>
@@ -1011,7 +741,7 @@
         La clave está en la práctica constante y en no rendirse cuando algo no funcione a la primera.
       </p>
       <div class="hero-actions" style="justify-content:center;margin-top:30px">
-        <a href="#programacion" class="btn btn-primary">Volver a Programación</a>
+        <a href="programacion.html" class="btn btn-primary">Ir a la Guía de Programación</a>
         <a href="#top" class="btn btn-ghost">Volver al inicio ↑</a>
       </div>
     </div>
@@ -1030,7 +760,6 @@
       <a href="#first">FIRST</a>
       <a href="#ftc">FTC</a>
       <a href="#areas">Áreas</a>
-      <a href="#programacion">Programación</a>
       <a href="#recursos">Recursos</a>
       <a href="#glosario">Glosario</a>
       <a href="https://www.instagram.com/volkaniksrobotics/" target="_blank">Instagram</a>
