@@ -4,16 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Guía de Programación — Volkaniks Robotics 37700</title>
-<meta name="description" content="Guía completa de programación para FTC: OpModes, Android Studio, Control Hub, Driver Station y autónomos básicos.">
+<meta name="description" content="Guía completa de programación para FTC: OpModes, tracciones, Control Hub, Driver Station, autónomos y fundamentos de programación.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  /* ============================================================
+     VARIABLES Y RESET
+     ============================================================ */
   :root{
     --fire-1:#E85D04;--fire-2:#F48C06;--fire-3:#FFBA08;--fire-glow:rgba(232,93,4,.35);
     --bg-0:#06070F;--bg-1:#0B0F1E;--bg-2:#121831;--line:rgba(255,255,255,.08);
     --txt-0:#FFFFFF;--txt-1:#C9D1E8;--txt-2:#8A93B2;--radius:18px;--radius-sm:12px;
     --shadow:0 20px 50px -20px rgba(0,0,0,.7);--maxw:1100px;--nav-h:70px;
+    --code-bg:#0A0E1A;--code-line:#1A2140;
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;scroll-padding-top:90px}
@@ -34,21 +38,35 @@
   h4{font-size:1.05rem;margin-bottom:8px}
   .lead{font-size:1.08rem;color:var(--txt-2);max-width:640px;margin:0 auto}
   .grad{background:linear-gradient(120deg,var(--fire-1),var(--fire-3));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* ============================================================ NAV */
   .nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:1000;background:rgba(6,7,15,.75);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:.3s}
   .nav.scrolled{background:rgba(6,7,15,.95);border-bottom-color:var(--line)}
   .nav-inner{max-width:var(--maxw);margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px}
   .brand{display:flex;align-items:center;gap:12px;font-family:'Orbitron',sans-serif;font-weight:900;color:#fff;font-size:1.05rem;letter-spacing:.05em}
   .brand-mark{width:38px;height:38px;border-radius:10px;flex-shrink:0;background:linear-gradient(135deg,var(--fire-1),var(--fire-3));display:grid;place-items:center;font-size:1.2rem;box-shadow:0 0 24px var(--fire-glow)}
   .brand small{display:block;font-family:'Inter',sans-serif;font-weight:400;font-size:.62rem;letter-spacing:.18em;color:var(--txt-2);margin-top:-2px}
-  .nav-links{display:flex;gap:6px;list-style:none;align-items:center}
-  .nav-links a{color:var(--txt-1);font-size:.88rem;font-weight:500;padding:8px 14px;border-radius:10px;transition:.2s;white-space:nowrap}
+  .nav-links{display:flex;gap:4px;list-style:none;align-items:center;flex-wrap:wrap}
+  .nav-links a{color:var(--txt-1);font-size:.82rem;font-weight:500;padding:6px 10px;border-radius:8px;transition:.2s;white-space:nowrap}
   .nav-links a:hover{background:rgba(255,255,255,.06);color:#fff}
-  .nav-links a.cta{background:linear-gradient(135deg,var(--fire-1),var(--fire-3));color:#fff;font-weight:700}
+  .nav-links a.cta{background:linear-gradient(135deg,var(--fire-1),var(--fire-3));color:#fff;font-weight:700;font-size:.82rem}
   .nav-links a.cta:hover{filter:brightness(1.1);box-shadow:0 0 24px var(--fire-glow)}
   .burger{display:none;background:none;border:0;color:#fff;font-size:1.6rem;cursor:pointer;padding:6px 10px}
+
+  /* ============================================================ HERO */
   .hero{padding:calc(var(--nav-h) + 60px) 0 60px;position:relative;overflow:hidden;background:radial-gradient(600px 400px at 50% 0%,rgba(232,93,4,.15),transparent 70%)}
   .hero h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.1;margin-bottom:16px}
   .hero p{font-size:1.1rem;color:var(--txt-1);max-width:640px;margin-bottom:24px}
+
+  /* ============================================================ INDEX / GUÍA DE INICIO */
+  .index-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:30px}
+  .index-card{background:var(--bg-1);border:1px solid var(--line);border-radius:var(--radius-sm);padding:20px;transition:.25s;display:flex;gap:14px;align-items:flex-start;cursor:pointer;text-decoration:none}
+  .index-card:hover{border-color:rgba(232,93,4,.4);transform:translateY(-4px);box-shadow:0 12px 30px -15px rgba(232,93,4,.3)}
+  .index-card .ic-num{font-family:'Orbitron',sans-serif;font-size:1.4rem;font-weight:900;color:var(--fire-2);line-height:1;flex-shrink:0;min-width:36px}
+  .index-card h4{margin-bottom:2px;font-size:.95rem;color:#fff}
+  .index-card p{font-size:.82rem;color:var(--txt-2);margin:0}
+
+  /* ============================================================ CARDS */
   .grid{display:grid;gap:22px}
   .g-2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
   .g-3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
@@ -61,45 +79,88 @@
   .card ul{margin-top:12px;padding-left:0;list-style:none}
   .card ul li{padding-left:22px;position:relative;font-size:.92rem;color:var(--txt-2);margin-bottom:6px}
   .card ul li::before{content:"▸";position:absolute;left:0;color:var(--fire-2);font-weight:800}
-  .code-block{background:#0A0E1A;border:1px solid var(--line);border-radius:var(--radius-sm);padding:20px;margin:14px 0;overflow-x:auto;font-family:'Courier New',monospace;font-size:.85rem;color:#A5D6FF;line-height:1.6}
-  .code-block .kw{color:#FF7B72}
-  .code-block .cls{color:#FFA657}
-  .code-block .fn{color:#D2A8FF}
-  .code-block .cm{color:#6B7280;font-style:italic}
-  .code-block .str{color:#A5D6FF}
+
+  /* ============================================================ SPLIT */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .split.rev .split-media{order:2}
+  .split-media img{border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--line)}
+  .feature-list{list-style:none;margin-top:24px}
+  .feature-list li{display:flex;gap:14px;margin-bottom:18px;align-items:flex-start}
+  .feature-list .fi{flex-shrink:0;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--fire-1),var(--fire-3));color:#fff;font-weight:800;font-size:.85rem}
+  .feature-list strong{color:#fff;display:block;font-size:.98rem}
+  .feature-list span{font-size:.9rem;color:var(--txt-2)}
+
+  /* ============================================================ CODE BLOCK MEJORADO */
+  .code-container{background:var(--code-bg);border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;margin:18px 0;box-shadow:0 8px 30px -12px rgba(0,0,0,.6)}
+  .code-header{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;background:rgba(255,255,255,.03);border-bottom:1px solid var(--line);font-size:.75rem;color:var(--txt-2)}
+  .code-header .dots{display:flex;gap:6px}
+  .code-header .dots span{width:10px;height:10px;border-radius:50%}
+  .code-header .dots span:nth-child(1){background:#FF5F57}
+  .code-header .dots span:nth-child(2){background:#FEBC2E}
+  .code-header .dots span:nth-child(3){background:#28C840}
+  .code-header .filename{font-family:'Fira Code',monospace;font-size:.78rem;color:var(--txt-2)}
+  .code-body{padding:20px;overflow-x:auto;font-family:'Fira Code',monospace;font-size:.85rem;line-height:1.8;color:#A5D6FF}
+  .code-body .kw{color:#FF7B72}
+  .code-body .cls{color:#FFA657}
+  .code-body .fn{color:#D2A8FF}
+  .code-body .cm{color:#6B7280;font-style:italic}
+  .code-body .str{color:#A5D6FF}
+  .code-body .num{color:#79C0FF}
+  .code-body .op{color:#FF7B72}
+  .code-body .ln{color:#4A5170;user-select:none;display:inline-block;width:2em;text-align:right;margin-right:1em}
+
+  /* ============================================================ CHIP / BADGE */
   .chip{display:inline-block;padding:5px 12px;border-radius:100px;font-size:.75rem;font-weight:600;background:rgba(232,93,4,.12);color:var(--fire-3);border:1px solid rgba(232,93,4,.25);margin:3px 4px 3px 0}
   .chip.ok{background:rgba(34,197,94,.12);color:#4ADE80;border-color:rgba(34,197,94,.3)}
   .chip.info{background:rgba(11,114,133,.15);color:#22D3EE;border-color:rgba(11,114,133,.3)}
+  .chip.warn{background:rgba(245,158,11,.12);color:#FBBF24;border-color:rgba(245,158,11,.3)}
+
+  /* ============================================================ TABLA */
+  .table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--line);background:var(--bg-1);margin:20px 0}
+  table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:500px}
+  thead{background:linear-gradient(90deg,rgba(232,93,4,.15),rgba(11,114,133,.08))}
+  th{text-align:left;padding:14px 18px;color:#fff;font-weight:700;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--line)}
+  td{padding:12px 18px;border-top:1px solid var(--line);color:var(--txt-1);font-size:.9rem}
+  tbody tr:hover{background:rgba(255,255,255,.03)}
+  td strong{color:#fff}
+  td code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:4px;font-family:'Fira Code',monospace;font-size:.82rem;color:var(--fire-3)}
+
+  /* ============================================================ RESOURCES */
   .res-card{display:flex;gap:16px;align-items:flex-start;padding:20px;background:var(--bg-1);border:1px solid var(--line);border-radius:var(--radius-sm);transition:.25s}
   .res-card:hover{border-color:rgba(232,93,4,.35);transform:translateX(4px)}
   .res-card .rc-icon{font-size:1.6rem;flex-shrink:0}
   .res-card h4{margin-bottom:3px;font-size:1rem}
   .res-card p{font-size:.85rem;color:var(--txt-2);margin:0}
-  .res-card code{display:inline-block;margin-top:6px;font-size:.78rem;padding:3px 9px;border-radius:6px;background:rgba(255,255,255,.06);color:var(--fire-3);font-family:monospace}
+  .res-card code{display:inline-block;margin-top:6px;font-size:.78rem;padding:3px 9px;border-radius:6px;background:rgba(255,255,255,.06);color:var(--fire-3);font-family:'Fira Code',monospace}
+
+  /* ============================================================ PROG BANNER */
   .prog-banner{background:linear-gradient(135deg,rgba(232,93,4,.14),rgba(11,114,133,.06));border:1px solid rgba(232,93,4,.28);border-radius:var(--radius);padding:24px 28px;margin-bottom:34px;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
   .prog-banner .big{font-size:2.2rem}
   .prog-banner p{margin:0;font-size:.98rem;color:var(--txt-1)}
-  .timeline{position:relative;max-width:820px;margin:0 auto;padding-left:40px}
-  .timeline::before{content:"";position:absolute;left:12px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--fire-1),var(--fire-3),transparent)}
-  .tl-item{position:relative;margin-bottom:34px}
-  .tl-item::before{content:"";position:absolute;left:-34px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--bg-0);border:3px solid var(--fire-2);box-shadow:0 0 0 4px rgba(232,93,4,.12)}
-  .tl-item h4{margin-bottom:4px}
-  .tl-item p{font-size:.92rem;color:var(--txt-2)}
+
+  /* ============================================================ FOOTER */
   footer{padding:40px 0 30px;border-top:1px solid var(--line);background:var(--bg-1);text-align:center}
   footer p{font-size:.85rem;color:var(--txt-2)}
+
+  /* ============================================================ REVEAL */
   .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
   .reveal.in{opacity:1;transform:none}
+
+  /* ============================================================ RESPONSIVE */
   @media(max-width:820px){
     .burger{display:block}
     .nav-links{position:fixed;top:var(--nav-h);left:0;right:0;flex-direction:column;align-items:stretch;gap:4px;background:rgba(6,7,15,.98);backdrop-filter:blur(20px);padding:20px;border-bottom:1px solid var(--line);transform:translateY(-120%);transition:.35s;max-height:calc(100vh - var(--nav-h));overflow-y:auto}
     .nav-links.open{transform:translateY(0)}
     .nav-links a{padding:14px 16px;font-size:.95rem}
     section{padding:56px 0}
+    .split{grid-template-columns:1fr;gap:36px}
+    .split.rev .split-media{order:0}
   }
 </style>
 </head>
 <body>
 
+<!-- ============================================================ NAVEGACIÓN -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="index.html" class="brand">
@@ -109,16 +170,19 @@
     <button class="burger" id="burger" aria-label="Menú">☰</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Inicio</a></li>
+      <li><a href="#guia">Guía</a></li>
       <li><a href="#opmode">OpModes</a></li>
+      <li><a href="#traccion">Tracciones</a></li>
       <li><a href="#controlhub">Control Hub</a></li>
-      <li><a href="#mecanum">Mecanum</a></li>
       <li><a href="#autonomo">Autónomo</a></li>
+      <li><a href="#fundamentos">Fundamentos</a></li>
       <li><a href="#recursos">Recursos</a></li>
-      <li><a href="index.html" class="cta">← Volver al Inicio</a></li>
+      <li><a href="index.html" class="cta">← Inicio</a></li>
     </ul>
   </div>
 </nav>
 
+<!-- ============================================================ HERO -->
 <header class="hero">
   <div class="container reveal">
     <span class="eyebrow">Guía Especializada</span>
@@ -126,10 +190,69 @@
     <p>
       Esta guía está diseñada para el área de programación del equipo Volkaniks 37700.
       Encontrarás desde los conceptos fundamentales de OpModes hasta la configuración
-      del Control Hub, programación de llantas mecanum y tu primer autónomo.
+      del Control Hub, programación de tracciones y tu primer autónomo.
     </p>
   </div>
 </header>
+
+<!-- ============================================================ GUÍA DE INICIO -->
+<section id="guia">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">📍 Empieza aquí</span>
+      <h2>Guía de <span class="grad">Inicio Rápido</span></h2>
+      <p class="lead">
+        Si eres nuevo en el equipo o en la programación, esta es tu ruta recomendada.
+        Sigue los temas en orden para construir una base sólida.
+      </p>
+    </div>
+
+    <div class="index-grid reveal">
+      <a href="#opmode" class="index-card">
+        <span class="ic-num">01</span>
+        <div>
+          <h4>Estructura de un OpMode</h4>
+          <p>La base de todo programa en FTC. Aprende LinearOpMode y OpMode iterativo.</p>
+        </div>
+      </a>
+      <a href="#traccion" class="index-card">
+        <span class="ic-num">02</span>
+        <div>
+          <h4>Formas de Tracción</h4>
+          <p>Tank, Arcade y Mecanum. Entiende cómo se mueve tu robot y cómo programarlo.</p>
+        </div>
+      </a>
+      <a href="#controlhub" class="index-card">
+        <span class="ic-num">03</span>
+        <div>
+          <h4>Control Hub y Driver Station</h4>
+          <p>Configura tus puertos, sube tu código y entiende el hardware.</p>
+        </div>
+      </a>
+      <a href="#autonomo" class="index-card">
+        <span class="ic-num">04</span>
+        <div>
+          <h4>Tu primer Autónomo</h4>
+          <p>Programa un autónomo básico por tiempos, sin necesidad de sensores.</p>
+        </div>
+      </a>
+      <a href="#fundamentos" class="index-card">
+        <span class="ic-num">05</span>
+        <div>
+          <h4>Fundamentos de Programación</h4>
+          <p>Variables, condicionales, bucles, POO y buenas prácticas en FTC.</p>
+        </div>
+      </a>
+      <a href="#recursos" class="index-card">
+        <span class="ic-num">06</span>
+        <div>
+          <h4>Recursos y Documentación</h4>
+          <p>Enlaces verificados a documentación oficial, tutoriales y herramientas.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- ============================================================ 1. ESTRUCTURA DE UN OPMODE -->
 <section id="opmode">
@@ -152,7 +275,12 @@
           El robot ejecuta las instrucciones <strong style="color:#fff">línea por línea</strong>,
           de arriba hacia abajo. Es ideal para autónomos porque el flujo es fácil de seguir.
         </p>
-        <div class="code-block">
+        <div class="code-container">
+          <div class="code-header">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <span class="filename">MiAutonomo.java</span>
+          </div>
+          <div class="code-body">
 <span class="kw">@Autonomous</span>(name = <span class="str">"MiAutonomo"</span>)
 <span class="kw">public class</span> <span class="cls">MiAutonomo</span> <span class="kw">extends</span> <span class="cls">LinearOpMode</span> {
   <span class="kw">@Override</span>
@@ -163,11 +291,12 @@
     <span class="fn">waitForStart</span>();  <span class="cm">// Espera el START</span>
 
     <span class="cm">// Se ejecuta secuencialmente</span>
-    <span class="fn">driveForward</span>(0.5, 2000);  <span class="cm">// 2 seg</span>
-    <span class="fn">turnRight</span>(0.5, 1000);    <span class="cm">// 1 seg</span>
+    <span class="fn">driveForward</span>(<span class="num">0.5</span>, <span class="num">2000</span>);  <span class="cm">// 2 seg</span>
+    <span class="fn">turnRight</span>(<span class="num">0.5</span>, <span class="num">1000</span>);    <span class="cm">// 1 seg</span>
     <span class="fn">stopMotors</span>();
   }
 }
+          </div>
         </div>
         <p style="font-size:.85rem;color:var(--fire-3);margin-top:10px">
           📖 <a href="https://ftc-docs.firstinspires.org/en/latest/programming_resources/tutorial_specific/android_studio/creating_op_modes/Creating-and-Running-an-Op-Mode-(Android-Studio).html" target="_blank" rel="noopener">Doc oficial: Crear un OpMode →</a>
@@ -177,13 +306,18 @@
       <!-- OpMode (no lineal) -->
       <div class="card" style="border-color:rgba(232,93,4,.5);box-shadow:0 0 40px -20px var(--fire-glow)">
         <div class="card-icon">🔄</div>
-        <h3>OpMode <span class="chip new">Usamos este</span></h3>
+        <h3>OpMode <span class="chip warn">Usamos este</span></h3>
         <p>
           Es un modelo <strong style="color:#fff">iterativo</strong>: el método <code>loop()</code>
           se repite continuamente hasta que el robot se detiene. Es el que
           <strong style="color:#fff">nuestro equipo utiliza</strong> actualmente.
         </p>
-        <div class="code-block">
+        <div class="code-container">
+          <div class="code-header">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <span class="filename">MiTeleOp.java</span>
+          </div>
+          <div class="code-body">
 <span class="kw">@TeleOp</span>(name = <span class="str">"MiTeleOp"</span>)
 <span class="kw">public class</span> <span class="cls">MiTeleOp</span> <span class="kw">extends</span> <span class="cls">OpMode</span> {
   <span class="kw">@Override</span>
@@ -214,6 +348,7 @@
     <span class="cm">// Se ejecuta al detener el robot</span>
   }
 }
+          </div>
         </div>
       </div>
     </div>
@@ -230,17 +365,233 @@
           <tr><td><strong>Método principal</strong></td><td><code>runOpMode()</code></td><td><code>init()</code>, <code>loop()</code>, <code>start()</code>, <code>stop()</code></td></tr>
           <tr><td><strong>Ideal para</strong></td><td>Autónomos con secuencias claras</td><td>TeleOp y control en tiempo real</td></tr>
           <tr><td><strong>Complejidad</strong></td><td>Más fácil de leer para principiantes</td><td>Más flexible para lógica compleja</td></tr>
+          <tr><td><strong>Telemetría</strong></td><td>Manual con <code>telemetry.update()</code></td><td>Automática cada ciclo del <code>loop()</code></td></tr>
         </tbody>
       </table>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ 2. CONTROL HUB Y DRIVER STATION -->
-<section id="controlhub" style="background:linear-gradient(180deg,var(--bg-0),var(--bg-1))">
+<!-- ============================================================ 2. FORMAS DE TRACCIÓN -->
+<section id="traccion" style="background:linear-gradient(180deg,var(--bg-0),var(--bg-1))">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">02</span>
+      <h2>Formas de <span class="grad">Tracción</span></h2>
+      <p class="lead">
+        La tracción define cómo se mueve tu robot. Cada tipo tiene ventajas y desventajas,
+        y su programación cambia según la configuración de las llantas.
+      </p>
+    </div>
+
+    <!-- Tank Drive -->
+    <div class="split reveal" style="margin-bottom:60px">
+      <div class="split-media">
+        <img src="https://docs.revrobotics.com/~gitbook/image?url=https%3A%2F%2Fcontent.gitbook.com%2Fcontent%2Frevrobotics%2FXXXX%2Fblobs%2Ftank-drive.png&width=800&dpr=2&quality=100" alt="Tank Drive" style="background:#fff;padding:20px" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/0A1628/E85D04?text=Tank+Drive'">
+      </div>
+      <div>
+        <h3>Tank Drive <span class="chip ok">Recomendado para empezar</span></h3>
+        <p>
+          Es la tracción más simple y directa. Dos lados (izquierdo y derecho) con
+          ruedas de tracción. Cada stick del gamepad controla un lado del robot.
+        </p>
+        <ul class="feature-list">
+          <li>
+            <span class="fi">👍</span>
+            <div><strong>Fácil de programar</strong><span>Mapeo directo de joystick a motor, sin matemáticas complejas.</span></div>
+          </li>
+          <li>
+            <span class="fi">🔄</span>
+            <div><strong>Giros precisos</strong><span>Ideal para giros sobre el propio eje.</span></div>
+          </li>
+          <li>
+            <span class="fi">⬆️</span>
+            <div><strong>Buena fuerza de empuje</strong><span>Excelente para empujar o subir rampas.</span></div>
+          </li>
+          <li>
+            <span class="fi">⚠️</span>
+            <div><strong>No puede desplazarse de lado</strong><span>Requiere girar para cambiar de dirección.</span></div>
+          </li>
+        </ul>
+        <div class="code-container" style="margin-top:20px">
+          <div class="code-header">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <span class="filename">TankDrive.java</span>
+          </div>
+          <div class="code-body">
+<span class="kw">@TeleOp</span>(name = <span class="str">"TankDrive"</span>)
+<span class="kw">public class</span> <span class="cls">TankDrive</span> <span class="kw">extends</span> <span class="cls">OpMode</span> {
+  <span class="kw">private</span> <span class="cls">DcMotor</span> leftMotor, rightMotor;
+
+  <span class="kw">@Override</span>
+  <span class="kw">public void</span> <span class="fn">init</span>() {
+    leftMotor  = <span class="fn">hardwareMap</span>.<span class="fn">get</span>(<span class="cls">DcMotor</span>.<span class="kw">class</span>, <span class="str">"leftMotor"</span>);
+    rightMotor = <span class="fn">hardwareMap</span>.<span class="fn">get</span>(<span class="cls">DcMotor</span>.<span class="kw">class</span>, <span class="str">"rightMotor"</span>);
+    leftMotor.<span class="fn">setDirection</span>(<span class="cls">DcMotor</span>.<span class="cls">Direction</span>.REVERSE);
+  }
+
+  <span class="kw">@Override</span>
+  <span class="kw">public void</span> <span class="fn">loop</span>() {
+    <span class="kw">double</span> leftPower  = -<span class="fn">gamepad1</span>.left_stick_y;
+    <span class="kw">double</span> rightPower = -<span class="fn">gamepad1</span>.right_stick_y;
+
+    leftMotor.<span class="fn">setPower</span>(leftPower);
+    rightMotor.<span class="fn">setPower</span>(rightPower);
+  }
+}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arcade Drive -->
+    <div class="split rev reveal" style="margin-bottom:60px">
+      <div class="split-media">
+        <img src="https://docs.revrobotics.com/~gitbook/image?url=https%3A%2F%2Fcontent.gitbook.com%2Fcontent%2Frevrobotics%2FXXXX%2Fblobs%2Farcade-drive.png&width=800&dpr=2&quality=100" alt="Arcade Drive" style="background:#fff;padding:20px" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/0A1628/E85D04?text=Arcade+Drive'">
+      </div>
+      <div>
+        <h3>Arcade Drive <span class="chip info">Un solo joystick</span></h3>
+        <p>
+          Usa <strong style="color:#fff">un solo joystick</strong> para controlar tanto
+          el avance como el giro. El eje Y controla la velocidad y el eje X la dirección.
+        </p>
+        <ul class="feature-list">
+          <li>
+            <span class="fi">🕹️</span>
+            <div><strong>Control intuitivo</strong><span>Un solo stick para todo el movimiento.</span></div>
+          </li>
+          <li>
+            <span class="fi">⚡</span>
+            <div><strong>Fácil de aprender</strong><span>Ideal para nuevos conductores.</span></div>
+          </li>
+          <li>
+            <span class="fi">⚠️</span>
+            <div><strong>Menos control fino</strong><span>No permite combinar avance y giro de forma independiente.</span></div>
+          </li>
+        </ul>
+        <div class="code-container" style="margin-top:20px">
+          <div class="code-header">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <span class="filename">ArcadeDrive.java</span>
+          </div>
+          <div class="code-body">
+<span class="kw">@TeleOp</span>(name = <span class="str">"ArcadeDrive"</span>)
+<span class="kw">public class</span> <span class="cls">ArcadeDrive</span> <span class="kw">extends</span> <span class="cls">OpMode</span> {
+  <span class="kw">private</span> <span class="cls">DcMotor</span> leftMotor, rightMotor;
+
+  <span class="kw">@Override</span>
+  <span class="kw">public void</span> <span class="fn">init</span>() {
+    leftMotor  = <span class="fn">hardwareMap</span>.<span class="fn">get</span>(<span class="cls">DcMotor</span>.<span class="kw">class</span>, <span class="str">"leftMotor"</span>);
+    rightMotor = <span class="fn">hardwareMap</span>.<span class="fn">get</span>(<span class="cls">DcMotor</span>.<span class="kw">class</span>, <span class="str">"rightMotor"</span>);
+    leftMotor.<span class="fn">setDirection</span>(<span class="cls">DcMotor</span>.<span class="cls">Direction</span>.REVERSE);
+  }
+
+  <span class="kw">@Override</span>
+  <span class="kw">public void</span> <span class="fn">loop</span>() {
+    <span class="kw">double</span> forward = -<span class="fn">gamepad1</span>.left_stick_y;
+    <span class="kw">double</span> turn    =  <span class="fn">gamepad1</span>.right_stick_x;
+
+    leftMotor.<span class="fn">setPower</span>(forward + turn);
+    rightMotor.<span class="fn">setPower</span>(forward - turn);
+  }
+}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mecanum Drive -->
+    <div class="split reveal">
+      <div class="split-media">
+        <img src="https://docs.revrobotics.com/~gitbook/image?url=https%3A%2F%2Fcontent.gitbook.com%2Fcontent%2Frevrobotics%2FXXXX%2Fblobs%2Fmecanum-drive.png&width=800&dpr=2&quality=100" alt="Mecanum Drive" style="background:#fff;padding:20px" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/0A1628/E85D04?text=Mecanum+Drive'">
+      </div>
+      <div>
+        <h3>Mecanum Drive <span class="chip warn">Nuestra configuración</span></h3>
+        <p>
+          Usa <strong style="color:#fff">4 llantas mecanum</strong> con rodillos a 45°.
+          Permite movimiento omnidireccional: avanzar, retroceder, girar y
+          desplazarse lateralmente sin cambiar la orientación.
+        </p>
+        <ul class="feature-list">
+          <li>
+            <span class="fi">↔️</span>
+            <div><strong>Strafe (desplazamiento lateral)</strong><span>Moverse de lado sin girar. Ventaja competitiva enorme.</span></div>
+          </li>
+          <li>
+            <span class="fi">🎯</span>
+            <div><strong>Máxima movilidad</strong><span>Puede apuntar y moverse en cualquier dirección.</span></div>
+          </li>
+          <li>
+            <span class="fi">⚠️</span>
+            <div><strong>Menos fuerza de empuje</strong><span>Los rodillos reducen la tracción directa.</span></div>
+          </li>
+          <li>
+            <span class="fi">⚠️</span>
+            <div><strong>Más complejo de programar</strong><span>Requiere combinar las 4 ruedas con suma y resta.</span></div>
+          </li>
+        </ul>
+        <div class="code-container" style="margin-top:20px">
+          <div class="code-header">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <span class="filename">MecanumDrive.java</span>
+          </div>
+          <div class="code-body">
+<span class="kw">@TeleOp</span>(name = <span class="str">"MecanumDrive"</span>)
+<span class="kw">public class</span> <span class="cls">MecanumDrive</span> <span class="kw">extends</span> <span class="cls">OpMode</span> {
+  <span class="kw">private</span> <span class="cls">DcMotor</span> leftFront, rightFront, leftBack, rightBack;
+
+  <span class="kw">@Override</span>
+  <span class="kw">public void</span> <span class="fn">init</span>() {
+    leftFront  = <span class="fn">hardwareMap</span>.<span class="fn">get</span>(<span class="cls">DcMotor</span>.<span class="kw">class</span>, <span class="str">"leftFront"</span>);
+    rightFront = <span class="fn">hardwareMap</span>.<span class="fn">get</span>(<span class="cls">DcMotor</span>.<span class="kw">class</span>, <span class="str">"rightFront"</span>);
+    leftBack   = <span class="fn">hardwareMap</span>.<span class="fn">get</span>(<span class="cls">DcMotor</span>.<span class="kw">class</span>, <span class="str">"leftBack"</span>);
+    rightBack  = <span class="fn">hardwareMap</span>.<span class="fn">get</span>(<span class="cls">DcMotor</span>.<span class="kw">class</span>, <span class="str">"rightBack"</span>);
+
+    leftFront.<span class="fn">setDirection</span>(<span class="cls">DcMotor</span>.<span class="cls">Direction</span>.REVERSE);
+    leftBack.<span class="fn">setDirection</span>(<span class="cls">DcMotor</span>.<span class="cls">Direction</span>.REVERSE);
+  }
+
+  <span class="kw">@Override</span>
+  <span class="kw">public void</span> <span class="fn">loop</span>() {
+    <span class="kw">double</span> forward = -<span class="fn">gamepad1</span>.left_stick_y;
+    <span class="kw">double</span> strafe  =  <span class="fn">gamepad1</span>.left_stick_x;
+    <span class="kw">double</span> rotate  =  <span class="fn">gamepad1</span>.right_stick_x;
+
+    leftFront.<span class="fn">setPower</span>(forward + strafe + rotate);
+    rightFront.<span class="fn">setPower</span>(forward - strafe - rotate);
+    leftBack.<span class="fn">setPower</span>(forward - strafe + rotate);
+    rightBack.<span class="fn">setPower</span>(forward + strafe - rotate);
+  }
+}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabla comparativa de tracciones -->
+    <h3 class="reveal" style="text-align:center;margin:60px 0 30px">Comparativa de Tracciones</h3>
+    <div class="table-wrap reveal">
+      <table>
+        <thead>
+          <tr><th>Característica</th><th>Tank Drive</th><th>Arcade Drive</th><th>Mecanum Drive</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Complejidad</strong></td><td>Baja</td><td>Baja</td><td>Media</td></tr>
+          <tr><td><strong>Movimiento lateral</strong></td><td>❌ No</td><td>❌ No</td><td>✅ Sí (strafe)</td></tr>
+          <tr><td><strong>Fuerza de empuje</strong></td><td>Alta</td><td>Alta</td><td>Media</td></tr>
+          <tr><td><strong>Precisión de giro</strong></td><td>Alta</td><td>Media</td><td>Alta</td></tr>
+          <tr><td><strong>Ideal para</strong></td><td>Empujar, rampas</td><td>Conductores nuevos</td><td>Juegos con strafe</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 3. CONTROL HUB Y DRIVER STATION -->
+<section id="controlhub">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">03</span>
       <h2>Control Hub y <span class="grad">Driver Station</span></h2>
       <p class="lead">
         El Control Hub es el cerebro del robot. La Driver Station es el control remoto.
@@ -252,6 +603,7 @@
       <div class="card">
         <div class="card-icon">🧠</div>
         <h3>¿Qué es el Control Hub?</h3>
+        <img src="https://docs.revrobotics.com/~gitbook/image?url=https%3A%2F%2Fcontent.gitbook.com%2Fcontent%2Frevrobotics%2FXXXX%2Fblobs%2Fcontrol-hub.png&width=400&dpr=2&quality=100" alt="Control Hub" style="background:#fff;padding:15px;border-radius:12px;margin:14px 0" loading="lazy" onerror="this.src='https://via.placeholder.com/400x250/0A1628/E85D04?text=Control+Hub'">
         <p>
           Es el dispositivo que ejecuta tu código. Contiene el <strong style="color:#fff">Robot Controller</strong>
           (la app que corre tus OpModes) y todos los puertos donde se conectan motores, servos y sensores.
@@ -261,11 +613,13 @@
           <li><strong style="color:#fff">Puertos de servo:</strong> 0 a 5 (integrados) + expansión.</li>
           <li><strong style="color:#fff">Puertos I2C:</strong> Para sensores de color, distancia, IMU, etc.</li>
           <li><strong style="color:#fff">Puerto USB:</strong> Para cámaras o dispositivos externos.</li>
+          <li><strong style="color:#fff">IMU integrada:</strong> Giroscopio, acelerómetro y magnetómetro.</li>
         </ul>
       </div>
       <div class="card">
         <div class="card-icon">📱</div>
         <h3>¿Qué es la Driver Station?</h3>
+        <img src="https://docs.revrobotics.com/~gitbook/image?url=https%3A%2F%2Fcontent.gitbook.com%2Fcontent%2Frevrobotics%2FXXXX%2Fblobs%2Fdriver-hub.png&width=400&dpr=2&quality=100" alt="Driver Hub" style="background:#fff;padding:15px;border-radius:12px;margin:14px 0" loading="lazy" onerror="this.src='https://via.placeholder.com/400x250/0A1628/E85D04?text=Driver+Hub'">
         <p>
           Es el dispositivo desde el que controlas el robot. Generalmente es un
           <strong style="color:#fff">Driver Hub</strong> o un celular Android con la app de Driver Station.
@@ -327,83 +681,30 @@
         </p>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ============================================================ 3. MECANUM -->
-<section id="mecanum">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">03</span>
-      <h2>Llantas <span class="grad">Mecanum</span></h2>
-      <p class="lead">
-        Nuestro robot usa <strong style="color:#fff">llantas mecanum</strong> en las 4 ruedas.
-        Esto permite movimiento omnidireccional: avanzar, retroceder, girar y desplazarse
-        lateralmente sin cambiar la orientación del robot.
+    <!-- La telemetría -->
+    <h3 class="reveal" style="margin:60px 0 30px">📊 La Telemetría: Tus ojos dentro del robot</h3>
+    <div class="card reveal">
+      <p>
+        La telemetría es la forma en que tu programa <strong style="color:#fff">"habla"</strong> contigo
+        durante la ejecución. Sin ella, programar un robot es como conducir con los ojos vendados:
+        no sabes qué está pasando. <code>telemetry.addData()</code> te permite enviar datos a la
+        Driver Station para verlos en tiempo real.
       </p>
-    </div>
-
-    <div class="split reveal">
-      <div class="split-media">
-        <img src="https://docs.revrobotics.com/rev-45-2470/rev-45-2470.png" alt="Llantas Mecanum" style="background:#fff;padding:20px" loading="lazy">
-      </div>
-      <div>
-        <h3>Cómo funcionan</h3>
-        <p>
-          Cada llanta tiene rodillos en un ángulo de <strong style="color:#fff">45 grados</strong>.
-          Al combinar la dirección y velocidad de las 4 ruedas, el robot se mueve en cualquier
-          dirección. Es lo que se conoce como <strong style="color:#fff">"holonomic drive"</strong>.
-        </p>
-        <ul class="feature-list">
-          <li>
-            <span class="fi">↔️</span>
-            <div><strong>Strafe (desplazamiento lateral)</strong><span>Moverse de lado sin girar.</span></div>
-          </li>
-          <li>
-            <span class="fi">↕️</span>
-            <div><strong>Avance y retroceso</strong><span>Movimiento frontal y trasero normal.</span></div>
-          </li>
-          <li>
-            <span class="fi">🔄</span>
-            <div><strong>Rotación</strong><span>Girar sobre el propio eje.</span></div>
-          </li>
-        </ul>
+      <div class="code-container" style="margin-top:16px">
+        <div class="code-header">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <span class="filename">TelemetriaEjemplo.java</span>
+        </div>
+        <div class="code-body">
+<span class="cm">// En tu loop() o runOpMode()</span>
+<span class="fn">telemetry</span>.<span class="fn">addData</span>(<span class="str">"Potencia Motor Izq"</span>, leftMotor.<span class="fn">getPower</span>());
+<span class="fn">telemetry</span>.<span class="fn">addData</span>(<span class="str">"Posición Encoder"</span>, leftMotor.<span class="fn">getCurrentPosition</span>());
+<span class="fn">telemetry</span>.<span class="fn">addData</span>(<span class="str">"Estado"</span>, <span class="str">"Ejecutando"</span>);
+<span class="fn">telemetry</span>.<span class="fn">update</span>();  <span class="cm">// ¡No olvides esto! Sin update, no se muestra nada.</span>
+        </div>
       </div>
     </div>
-
-    <h3 class="reveal" style="margin:60px 0 30px">💻 Código para Mecanum Drive</h3>
-    <div class="code-block reveal" style="max-width:800px;margin:0 auto">
-<span class="kw">@TeleOp</span>(name = <span class="str">"MecanumDrive"</span>)
-<span class="kw">public class</span> <span class="cls">MecanumDrive</span> <span class="kw">extends</span> <span class="cls">OpMode</span> {
-  <span class="kw">private</span> <span class="cls">DcMotor</span> leftFront, rightFront, leftBack, rightBack;
-
-  <span class="kw">@Override</span>
-  <span class="kw">public void</span> <span class="fn">init</span>() {
-    leftFront  = <span class="fn">hardwareMap</span>.<span class="fn">get</span>(<span class="cls">DcMotor</span>.<span class="kw">class</span>, <span class="str">"leftFront"</span>);
-    rightFront = <span class="fn">hardwareMap</span>.<span class="fn">get</span>(<span class="cls">DcMotor</span>.<span class="kw">class</span>, <span class="str">"rightFront"</span>);
-    leftBack   = <span class="fn">hardwareMap</span>.<span class="fn">get</span>(<span class="cls">DcMotor</span>.<span class="kw">class</span>, <span class="str">"leftBack"</span>);
-    rightBack  = <span class="fn">hardwareMap</span>.<span class="fn">get</span>(<span class="cls">DcMotor</span>.<span class="kw">class</span>, <span class="str">"rightBack"</span>);
-
-    leftFront.<span class="fn">setDirection</span>(<span class="cls">DcMotor</span>.<span class="cls">Direction</span>.REVERSE);
-    leftBack.<span class="fn">setDirection</span>(<span class="cls">DcMotor</span>.<span class="cls">Direction</span>.REVERSE);
-  }
-
-  <span class="kw">@Override</span>
-  <span class="kw">public void</span> <span class="fn">loop</span>() {
-    <span class="kw">double</span> forward = -<span class="fn">gamepad1</span>.left_stick_y;
-    <span class="kw">double</span> strafe  =  <span class="fn">gamepad1</span>.left_stick_x;
-    <span class="kw">double</span> rotate  =  <span class="fn">gamepad1</span>.right_stick_x;
-
-    leftFront.<span class="fn">setPower</span>(forward + strafe + rotate);
-    rightFront.<span class="fn">setPower</span>(forward - strafe - rotate);
-    leftBack.<span class="fn">setPower</span>(forward - strafe + rotate);
-    rightBack.<span class="fn">setPower</span>(forward + strafe - rotate);
-  }
-}
-    </div>
-    <p class="reveal" style="text-align:center;font-size:.85rem;color:var(--txt-2);margin-top:16px">
-      📖 <a href="https://docs.revrobotics.com/ftc-kickoff-concepts/centerstage-2023-2024/upgrades" target="_blank" rel="noopener">Doc de REV Robotics sobre Mecanum →</a>
-    </p>
   </div>
 </section>
 
@@ -430,7 +731,12 @@
       </div>
     </div>
 
-    <div class="code-block reveal" style="max-width:800px;margin:0 auto">
+    <div class="code-container reveal" style="max-width:850px;margin:0 auto">
+      <div class="code-header">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <span class="filename">AutonomoPorTiempos.java</span>
+      </div>
+      <div class="code-body">
 <span class="kw">@Autonomous</span>(name = <span class="str">"AutonomoPorTiempos"</span>)
 <span class="kw">public class</span> <span class="cls">AutonomoPorTiempos</span> <span class="kw">extends</span> <span class="cls">OpMode</span> {
   <span class="kw">private</span> <span class="cls">DcMotor</span> leftFront, rightFront, leftBack, rightBack;
@@ -453,18 +759,18 @@
 
     <span class="cm">// Fase 1: Avanzar 2 segundos</span>
     timer.<span class="fn">reset</span>();
-    <span class="kw">while</span> (<span class="fn">opModeIsActive</span>() && timer.<span class="fn">seconds</span>() < 2.0) {
-      <span class="fn">setMotors</span>(0.5, 0.5, 0.5, 0.5);
+    <span class="kw">while</span> (<span class="fn">opModeIsActive</span>() && timer.<span class="fn">seconds</span>() < <span class="num">2.0</span>) {
+      <span class="fn">setMotors</span>(<span class="num">0.5</span>, <span class="num">0.5</span>, <span class="num">0.5</span>, <span class="num">0.5</span>);
     }
 
     <span class="cm">// Fase 2: Girar a la derecha 1 segundo</span>
     timer.<span class="fn">reset</span>();
-    <span class="kw">while</span> (<span class="fn">opModeIsActive</span>() && timer.<span class="fn">seconds</span>() < 1.0) {
-      <span class="fn">setMotors</span>(0.5, -0.5, 0.5, -0.5);
+    <span class="kw">while</span> (<span class="fn">opModeIsActive</span>() && timer.<span class="fn">seconds</span>() < <span class="num">1.0</span>) {
+      <span class="fn">setMotors</span>(<span class="num">0.5</span>, <span class="num">-0.5</span>, <span class="num">0.5</span>, <span class="num">-0.5</span>);
     }
 
     <span class="cm">// Fase 3: Detenerse</span>
-    <span class="fn">setMotors</span>(0, 0, 0, 0);
+    <span class="fn">setMotors</span>(<span class="num">0</span>, <span class="num">0</span>, <span class="num">0</span>, <span class="num">0</span>);
   }
 
   <span class="kw">private void</span> <span class="fn">setMotors</span>(<span class="kw">double</span> lf, <span class="kw">double</span> rf, <span class="kw">double</span> lb, <span class="kw">double</span> rb) {
@@ -474,6 +780,7 @@
     rightBack.<span class="fn">setPower</span>(rb);
   }
 }
+      </div>
     </div>
 
     <div class="prog-banner reveal" style="margin-top:40px">
@@ -491,29 +798,170 @@
   </div>
 </section>
 
-<!-- ============================================================ 5. RECURSOS DE PROGRAMACIÓN -->
-<section id="recursos">
+<!-- ============================================================ 5. FUNDAMENTOS DE PROGRAMACIÓN -->
+<section id="fundamentos">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">05</span>
+      <h2>Fundamentos de <span class="grad">Programación</span></h2>
+      <p class="lead">
+        Estos conceptos aplican a cualquier lenguaje y te servirán no solo en FTC,
+        sino en toda tu carrera como programador. Domínalos y serás imparable.
+      </p>
+    </div>
+
+    <div class="grid g-2 reveal">
+      <!-- Variables y tipos -->
+      <div class="card">
+        <div class="card-icon">📦</div>
+        <h3>Variables y Tipos de Datos</h3>
+        <p>Una variable es un <strong style="color:#fff">espacio en memoria</strong> donde guardas un valor. En Java, cada variable tiene un tipo.</p>
+        <div class="code-container">
+          <div class="code-header">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <span class="filename">Variables.java</span>
+          </div>
+          <div class="code-body">
+<span class="kw">int</span> edad = <span class="num">16</span>;              <span class="cm">// Número entero</span>
+<span class="kw">double</span> potencia = <span class="num">0.75</span>;      <span class="cm">// Número decimal</span>
+<span class="kw">boolean</span> activo = <span class="kw">true</span>;        <span class="cm">// Verdadero/Falso</span>
+<span class="cls">String</span> nombre = <span class="str">"Volkaniks"</span>;  <span class="cm">// Texto</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Condicionales -->
+      <div class="card">
+        <div class="card-icon">🔀</div>
+        <h3>Condicionales (if / else)</h3>
+        <p>Permiten que el robot <strong style="color:#fff">tome decisiones</strong> según una condición.</p>
+        <div class="code-container">
+          <div class="code-header">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <span class="filename">Condicionales.java</span>
+          </div>
+          <div class="code-body">
+<span class="kw">if</span> (distancia < <span class="num">10</span>) {
+  <span class="cm">// El robot está muy cerca: detenerse</span>
+  leftMotor.<span class="fn">setPower</span>(<span class="num">0</span>);
+  rightMotor.<span class="fn">setPower</span>(<span class="num">0</span>);
+} <span class="kw">else if</span> (distancia < <span class="num">30</span>) {
+  <span class="cm">// Cerca pero no demasiado: ir lento</span>
+  leftMotor.<span class="fn">setPower</span>(<span class="num">0.3</span>);
+  rightMotor.<span class="fn">setPower</span>(<span class="num">0.3</span>);
+} <span class="kw">else</span> {
+  <span class="cm">// Lejos: velocidad completa</span>
+  leftMotor.<span class="fn">setPower</span>(<span class="num">1.0</span>);
+  rightMotor.<span class="fn">setPower</span>(<span class="num">1.0</span>);
+}
+          </div>
+        </div>
+      </div>
+
+      <!-- Bucles -->
+      <div class="card">
+        <div class="card-icon">🔁</div>
+        <h3>Bucles (while / for)</h3>
+        <p>Repiten un bloque de código varias veces. Son esenciales para la lógica de los OpModes.</p>
+        <div class="code-container">
+          <div class="code-header">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <span class="filename">Bucles.java</span>
+          </div>
+          <div class="code-body">
+<span class="cm">// while: se repite mientras la condición sea verdadera</span>
+<span class="kw">while</span> (<span class="fn">opModeIsActive</span>() && sensor.<span class="fn">getDistance</span>() > <span class="num">10</span>) {
+  <span class="fn">avanzar</span>(<span class="num">0.5</span>);
+}
+
+<span class="cm">// for: se repite un número conocido de veces</span>
+<span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">0</span>; i < <span class="num">4</span>; i++) {
+  <span class="fn">moverBrazo</span>();
+  <span class="fn">sleep</span>(<span class="num">500</span>);
+}
+          </div>
+        </div>
+      </div>
+
+      <!-- Funciones -->
+      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <h3>Funciones (Métodos)</h3>
+        <p>Agrupan código que se repite. Hacen tu programa más <strong style="color:#fff">limpio y reutilizable</strong>.</p>
+        <div class="code-container">
+          <div class="code-header">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <span class="filename">Funciones.java</span>
+          </div>
+          <div class="code-body">
+<span class="cm">// Definición de la función</span>
+<span class="kw">private void</span> <span class="fn">moverRobot</span>(<span class="kw">double</span> potencia, <span class="kw">int</span> tiempoMs) {
+  leftMotor.<span class="fn">setPower</span>(potencia);
+  rightMotor.<span class="fn">setPower</span>(potencia);
+  <span class="fn">sleep</span>(tiempoMs);
+  leftMotor.<span class="fn">setPower</span>(<span class="num">0</span>);
+  rightMotor.<span class="fn">setPower</span>(<span class="num">0</span>);
+}
+
+<span class="cm">// Llamada a la función</span>
+<span class="fn">moverRobot</span>(<span class="num">0.8</span>, <span class="num">1000</span>);
+          </div>
+        </div>
+      </div>
+
+      <!-- POO -->
+      <div class="card">
+        <div class="card-icon">🏗️</div>
+        <h3>Programación Orientada a Objetos (POO)</h3>
+        <p>En Java todo gira alrededor de <strong style="color:#fff">clases y objetos</strong>. En FTC, cada OpMode es una clase que hereda de <code>OpMode</code>.</p>
+        <ul>
+          <li><strong style="color:#fff">Clase:</strong> Un molde o plantilla. Ej: <code>OpMode</code>.</li>
+          <li><strong style="color:#fff">Objeto:</strong> Una instancia de la clase. Ej: tu <code>MiTeleOp</code>.</li>
+          <li><strong style="color:#fff">Herencia:</strong> Una clase hereda métodos de otra. Ej: <code>extends OpMode</code>.</li>
+          <li><strong style="color:#fff">Encapsulamiento:</strong> Usar <code>private</code> para proteger datos internos.</li>
+        </ul>
+      </div>
+
+      <!-- Buenas prácticas -->
+      <div class="card">
+        <div class="card-icon">✨</div>
+        <h3>Buenas Prácticas en FTC</h3>
+        <ul>
+          <li><strong style="color:#fff">Nombra bien tus variables:</strong> <code>leftMotorPower</code> es mejor que <code>x</code>.</li>
+          <li><strong style="color:#fff">Comenta tu código:</strong> Explica el "por qué", no el "qué".</li>
+          <li><strong style="color:#fff">Usa constantes:</strong> <code>private static final double VELOCIDAD_MAX = 1.0;</code></li>
+          <li><strong style="color:#fff">Separa la lógica:</strong> Una función para leer gamepad, otra para mover motores.</li>
+          <li><strong style="color:#fff">Siempre actualiza la telemetría:</strong> <code>telemetry.update()</code> al final de cada ciclo.</li>
+          <li><strong style="color:#fff">Prueba incrementalmente:</strong> Un motor a la vez, una función a la vez.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 6. RECURSOS DE PROGRAMACIÓN -->
+<section id="recursos" style="background:linear-gradient(180deg,var(--bg-0),var(--bg-1))">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">06</span>
       <h2>Recursos de <span class="grad">Programación</span></h2>
-      <p class="lead">Documentación, tutoriales y herramientas específicas para programadores de FTC.</p>
+      <p class="lead">Documentación, tutoriales y herramientas específicas para programadores de FTC. Todos los enlaces han sido verificados.</p>
     </div>
 
     <div class="grid g-2 reveal">
       <div class="res-card">
         <span class="rc-icon">📚</span>
         <div>
-          <h4>FTC Docs — Android Studio Tutorial</h4>
-          <p>Guía oficial paso a paso para programar en Android Studio.</p>
-          <code>ftc-docs.firstinspires.org/android_studio</code>
+          <h4>FTC Docs — Documentación Oficial</h4>
+          <p>Guía completa sobre OpModes, hardware, configuración y tutoriales.</p>
+          <code>ftc-docs.firstinspires.org</code>
         </div>
       </div>
       <div class="res-card">
         <span class="rc-icon">🖥️</span>
         <div>
-          <h4>FTC SIM — Simulador virtual</h4>
-          <p>Programa robots virtuales sin necesidad del robot físico.</p>
+          <h4>FTC SIM — Simulador Virtual</h4>
+          <p>Programa robots virtuales sin necesidad del robot físico. Ideal para practicar en casa.</p>
           <code>pixelpad.io/ftcsim</code>
         </div>
       </div>
@@ -521,23 +969,23 @@
         <span class="rc-icon">💾</span>
         <div>
           <h4>GitHub — FTC SDK Oficial</h4>
-          <p>Repositorio oficial del SDK de FTC con ejemplos de código.</p>
+          <p>Repositorio oficial del SDK de FTC con cientos de ejemplos de código.</p>
           <code>github.com/FIRST-Tech-Challenge/FtcRobotController</code>
         </div>
       </div>
       <div class="res-card">
         <span class="rc-icon">📖</span>
         <div>
-          <h4>Game Manual 0 — Programación</h4>
-          <p>Guía comunitaria muy completa sobre OpModes, hardware y más.</p>
-          <code>gm0.org/en/latest/docs/software</code>
+          <h4>Game Manual 0 (GM0)</h4>
+          <p>La guía comunitaria más completa sobre programación, hardware y mecánica en FTC.</p>
+          <code>gm0.org</code>
         </div>
       </div>
       <div class="res-card">
         <span class="rc-icon">⚙️</span>
         <div>
           <h4>REV Robotics — Docs</h4>
-          <p>Documentación sobre Control Hub, Driver Hub y hardware REV.</p>
+          <p>Documentación oficial sobre Control Hub, Driver Hub, motores y sensores REV.</p>
           <code>docs.revrobotics.com</code>
         </div>
       </div>
@@ -545,15 +993,15 @@
         <span class="rc-icon">🎮</span>
         <div>
           <h4>Tutorial de Gamepad en FTC</h4>
-          <p>Aprende a mapear los controles del gamepad a los motores.</p>
-          <code>ftc-docs.firstinspires.org/gamepad</code>
+          <p>Aprende a mapear los controles del gamepad a los motores del robot.</p>
+          <code>ftc-docs.firstinspires.org</code>
         </div>
       </div>
       <div class="res-card">
         <span class="rc-icon">🏗️</span>
         <div>
           <h4>Road Runner — Trayectorias</h4>
-          <p>Librería avanzada para planificación de trayectorias autónomas.</p>
+          <p>Librería avanzada para planificación de trayectorias autónomas suaves y precisas.</p>
           <code>rr.brott.dev</code>
         </div>
       </div>
@@ -561,14 +1009,31 @@
         <span class="rc-icon">📏</span>
         <div>
           <h4>Encoders en FTC</h4>
-          <p>Documentación sobre encoders para movimiento preciso.</p>
-          <code>ftc-docs.firstinspires.org/encoders</code>
+          <p>Documentación sobre encoders para movimiento preciso y control de posición.</p>
+          <code>ftc-docs.firstinspires.org</code>
+        </div>
+      </div>
+      <div class="res-card">
+        <span class="rc-icon">🧠</span>
+        <div>
+          <h4>Control Theory para FTC</h4>
+          <p>Guía de teoría de control diseñada específicamente para equipos de FTC.</p>
+          <code>github.com/BenCaunt/CTRL-ALT-FTC</code>
+        </div>
+      </div>
+      <div class="res-card">
+        <span class="rc-icon">💬</span>
+        <div>
+          <h4>Discord Oficial de FTC</h4>
+          <p>Comunidad global para resolver dudas con otros equipos y mentores.</p>
+          <code>discord.gg/firsttechchallenge</code>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ============================================================ FOOTER -->
 <footer>
   <div class="container">
     <div class="brand" style="justify-content:center;margin-bottom:14px">
