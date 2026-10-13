@@ -4,19 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Volkaniks Robotics 37700 — Guía para Nuevos Miembros</title>
-<meta name="description" content="Guía completa de bienvenida para nuevos miembros del equipo Volkaniks Robotics 37700 de FTC en Puebla.">
+<meta name="description" content="Guía completa de bienvenida para nuevos miembros del equipo Volkaniks Robotics 37700 de FTC en Puebla. Temporada 2026-2027.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   /* ============================================================
-     VARIABLES GLOBALES — modifica aquí para cambiar la paleta
+     VARIABLES GLOBALES — Paleta basada en el logo de Volkaniks
      ============================================================ */
   :root{
-    --fire-1:#FF3D00;
-    --fire-2:#FF7A00;
-    --fire-3:#FFB800;
-    --fire-glow:rgba(255,77,0,.35);
+    --volkan-teal:#0B7285;
+    --volkan-teal-dark:#064E5A;
+    --volkan-navy:#0A1628;
+    --volkan-orange:#E85D04;
+    --volkan-gray:#6B7280;
+    --volkan-gray-light:#9CA3AF;
+    --fire-1:#E85D04;
+    --fire-2:#F48C06;
+    --fire-3:#FFBA08;
+    --fire-glow:rgba(232,93,4,.35);
     --bg-0:#06070F;
     --bg-1:#0B0F1E;
     --bg-2:#121831;
@@ -27,7 +33,6 @@
     --txt-2:#8A93B2;
     --ok:#22C55E;
     --info:#3B82F6;
-    --warn:#F59E0B;
     --radius:18px;
     --radius-sm:12px;
     --shadow:0 20px 50px -20px rgba(0,0,0,.7);
@@ -35,7 +40,6 @@
     --nav-h:70px;
   }
 
-  /* ============================================================ RESET */
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;scroll-padding-top:90px}
   body{
@@ -50,13 +54,10 @@
   a{color:var(--fire-3);text-decoration:none;transition:.2s}
   a:hover{color:var(--fire-2)}
   ::selection{background:var(--fire-1);color:#fff}
-
-  /* Scrollbar */
   ::-webkit-scrollbar{width:10px}
   ::-webkit-scrollbar-track{background:var(--bg-0)}
   ::-webkit-scrollbar-thumb{background:linear-gradient(var(--fire-1),var(--fire-3));border-radius:10px}
 
-  /* ============================================================ LAYOUT */
   .container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
   section{padding:90px 0;position:relative}
   .section-head{text-align:center;max-width:760px;margin:0 auto 60px}
@@ -64,101 +65,46 @@
     display:inline-block;font-family:'Orbitron',sans-serif;font-size:.72rem;font-weight:700;
     letter-spacing:.25em;text-transform:uppercase;color:var(--fire-2);
     padding:6px 14px;border:1px solid var(--fire-glow);border-radius:100px;
-    background:rgba(255,77,0,.06);margin-bottom:18px;
+    background:rgba(232,93,4,.06);margin-bottom:18px;
   }
   h1,h2,h3,h4{color:var(--txt-0);line-height:1.2;font-weight:800}
   h2{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:14px}
   h3{font-size:1.35rem;margin-bottom:10px}
   h4{font-size:1.05rem;margin-bottom:8px}
   .lead{font-size:1.08rem;color:var(--txt-2);max-width:640px;margin:0 auto}
-  .grad{
-    background:linear-gradient(120deg,var(--fire-1),var(--fire-3));
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-  }
+  .grad{background:linear-gradient(120deg,var(--fire-1),var(--fire-3));-webkit-background-clip:text;background-clip:text;color:transparent}
 
   /* ============================================================ NAV */
-  .nav{
-    position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:1000;
-    background:rgba(6,7,15,.75);backdrop-filter:blur(14px);
-    border-bottom:1px solid transparent;transition:.3s;
-  }
+  .nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:1000;background:rgba(6,7,15,.75);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:.3s}
   .nav.scrolled{background:rgba(6,7,15,.95);border-bottom-color:var(--line)}
-  .nav-inner{
-    max-width:var(--maxw);margin:0 auto;padding:0 24px;height:100%;
-    display:flex;align-items:center;justify-content:space-between;gap:20px;
-  }
+  .nav-inner{max-width:var(--maxw);margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px}
   .brand{display:flex;align-items:center;gap:12px;font-family:'Orbitron',sans-serif;font-weight:900;color:#fff;font-size:1.05rem;letter-spacing:.05em}
-  .brand-mark{
-    width:38px;height:38px;border-radius:10px;flex-shrink:0;
-    background:linear-gradient(135deg,var(--fire-1),var(--fire-3));
-    display:grid;place-items:center;font-size:1.2rem;
-    box-shadow:0 0 24px var(--fire-glow);
-  }
+  .brand-mark{width:38px;height:38px;border-radius:10px;flex-shrink:0;background:linear-gradient(135deg,var(--fire-1),var(--fire-3));display:grid;place-items:center;font-size:1.2rem;box-shadow:0 0 24px var(--fire-glow)}
   .brand small{display:block;font-family:'Inter',sans-serif;font-weight:400;font-size:.62rem;letter-spacing:.18em;color:var(--txt-2);margin-top:-2px}
   .nav-links{display:flex;gap:6px;list-style:none;align-items:center}
-  .nav-links a{
-    color:var(--txt-1);font-size:.88rem;font-weight:500;
-    padding:8px 14px;border-radius:10px;transition:.2s;white-space:nowrap;
-  }
+  .nav-links a{color:var(--txt-1);font-size:.88rem;font-weight:500;padding:8px 14px;border-radius:10px;transition:.2s;white-space:nowrap}
   .nav-links a:hover{background:rgba(255,255,255,.06);color:#fff}
-  .nav-links a.cta{
-    background:linear-gradient(135deg,var(--fire-1),var(--fire-3));
-    color:#fff;font-weight:700;
-  }
+  .nav-links a.cta{background:linear-gradient(135deg,var(--fire-1),var(--fire-3));color:#fff;font-weight:700}
   .nav-links a.cta:hover{filter:brightness(1.1);box-shadow:0 0 24px var(--fire-glow)}
   .burger{display:none;background:none;border:0;color:#fff;font-size:1.6rem;cursor:pointer;padding:6px 10px}
 
   /* ============================================================ HERO */
-  .hero{
-    min-height:100vh;display:flex;align-items:center;padding:calc(var(--nav-h) + 60px) 0 80px;
-    position:relative;overflow:hidden;
-  }
-  .hero::before{
-    content:"";position:absolute;inset:0;z-index:0;
-    background:
-      radial-gradient(700px 500px at 15% 20%, rgba(255,61,0,.22), transparent 60%),
-      radial-gradient(600px 500px at 85% 70%, rgba(255,184,0,.15), transparent 60%),
-      radial-gradient(400px 400px at 50% 100%, rgba(255,122,0,.12), transparent 60%);
-  }
-  .hero::after{
-    content:"";position:absolute;inset:0;z-index:0;opacity:.35;
-    background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
-                     linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
-    background-size:60px 60px;
-    mask-image:radial-gradient(ellipse at center,black 30%,transparent 75%);
-  }
+  .hero{min-height:100vh;display:flex;align-items:center;padding:calc(var(--nav-h) + 60px) 0 80px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(700px 500px at 15% 20%,rgba(232,93,4,.22),transparent 60%),radial-gradient(600px 500px at 85% 70%,rgba(11,114,133,.15),transparent 60%),radial-gradient(400px 400px at 50% 100%,rgba(255,186,8,.12),transparent 60%)}
+  .hero::after{content:"";position:absolute;inset:0;z-index:0;opacity:.35;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse at center,black 30%,transparent 75%)}
   .hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;width:100%}
   .hero h1{font-size:clamp(2.2rem,5.5vw,4rem);line-height:1.05;margin-bottom:22px;letter-spacing:-.02em}
   .hero p{font-size:1.12rem;color:var(--txt-1);max-width:560px;margin-bottom:32px}
   .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
-  .btn{
-    display:inline-flex;align-items:center;gap:10px;
-    padding:14px 26px;border-radius:12px;font-weight:700;font-size:.95rem;
-    border:none;cursor:pointer;transition:.25s;font-family:inherit;
-  }
-  .btn-primary{
-    background:linear-gradient(135deg,var(--fire-1),var(--fire-3));color:#fff;
-    box-shadow:0 8px 30px -8px var(--fire-glow);
-  }
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:12px;font-weight:700;font-size:.95rem;border:none;cursor:pointer;transition:.25s;font-family:inherit}
+  .btn-primary{background:linear-gradient(135deg,var(--fire-1),var(--fire-3));color:#fff;box-shadow:0 8px 30px -8px var(--fire-glow)}
   .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px -8px var(--fire-glow);color:#fff}
   .btn-ghost{background:rgba(255,255,255,.06);color:#fff;border:1px solid var(--line)}
   .btn-ghost:hover{background:rgba(255,255,255,.12);color:#fff}
-
-  /* Hero visual card */
-  .hero-card{
-    position:relative;border-radius:24px;padding:22px;
-    background:linear-gradient(160deg,rgba(255,77,0,.15),rgba(18,24,49,.9));
-    border:1px solid var(--line);box-shadow:var(--shadow);
-    animation:float 6s ease-in-out infinite;
-  }
+  .hero-card{position:relative;border-radius:24px;padding:22px;background:linear-gradient(160deg,rgba(232,93,4,.15),rgba(18,24,49,.9));border:1px solid var(--line);box-shadow:var(--shadow);animation:float 6s ease-in-out infinite}
   @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-  .hero-card img{border-radius:16px;aspect-ratio:4/3;object-fit:cover;width:100%}
-  .hero-badge{
-    position:absolute;top:-14px;right:-14px;
-    background:linear-gradient(135deg,var(--fire-1),var(--fire-3));
-    color:#fff;font-weight:800;font-size:.75rem;letter-spacing:.1em;
-    padding:8px 16px;border-radius:100px;box-shadow:0 8px 24px var(--fire-glow);
-  }
+  .hero-card img{border-radius:16px;aspect-ratio:1/1;object-fit:contain;width:100%;background:#fff;padding:20px}
+  .hero-badge{position:absolute;top:-14px;right:-14px;background:linear-gradient(135deg,var(--fire-1),var(--fire-3));color:#fff;font-weight:800;font-size:.75rem;letter-spacing:.1em;padding:8px 16px;border-radius:100px;box-shadow:0 8px 24px var(--fire-glow)}
   .hero-stats{display:flex;gap:26px;margin-top:36px;flex-wrap:wrap}
   .hero-stat strong{display:block;font-family:'Orbitron',sans-serif;font-size:1.7rem;color:#fff;line-height:1}
   .hero-stat span{font-size:.78rem;color:var(--txt-2);letter-spacing:.06em;text-transform:uppercase}
@@ -168,47 +114,30 @@
   .g-2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
   .g-3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
   .g-4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-
-  .card{
-    background:linear-gradient(160deg,var(--bg-2),var(--bg-1));
-    border:1px solid var(--line);border-radius:var(--radius);
-    padding:28px;transition:.3s;position:relative;overflow:hidden;
-  }
-  .card::before{
-    content:"";position:absolute;top:0;left:0;right:0;height:3px;
-    background:linear-gradient(90deg,var(--fire-1),var(--fire-3));
-    transform:scaleX(0);transform-origin:left;transition:.4s;
-  }
-  .card:hover{transform:translateY(-6px);border-color:rgba(255,122,0,.35);box-shadow:0 24px 50px -25px rgba(255,77,0,.4)}
+  .card{background:linear-gradient(160deg,var(--bg-2),var(--bg-1));border:1px solid var(--line);border-radius:var(--radius);padding:28px;transition:.3s;position:relative;overflow:hidden}
+  .card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--fire-1),var(--fire-3));transform:scaleX(0);transform-origin:left;transition:.4s}
+  .card:hover{transform:translateY(-6px);border-color:rgba(232,93,4,.35);box-shadow:0 24px 50px -25px rgba(232,93,4,.4)}
   .card:hover::before{transform:scaleX(1)}
-  .card-icon{
-    width:52px;height:52px;border-radius:14px;display:grid;place-items:center;
-    font-size:1.5rem;margin-bottom:18px;
-    background:linear-gradient(135deg,rgba(255,77,0,.18),rgba(255,184,0,.08));
-    border:1px solid rgba(255,122,0,.25);
-  }
+  .card-icon{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:1.5rem;margin-bottom:18px;background:linear-gradient(135deg,rgba(232,93,4,.18),rgba(11,114,133,.08));border:1px solid rgba(232,93,4,.25)}
   .card p{font-size:.95rem;color:var(--txt-2)}
   .card ul{margin-top:12px;padding-left:0;list-style:none}
   .card ul li{padding-left:22px;position:relative;font-size:.92rem;color:var(--txt-2);margin-bottom:6px}
   .card ul li::before{content:"▸";position:absolute;left:0;color:var(--fire-2);font-weight:800}
 
-  /* ============================================================ INFO BLOCKS */
+  /* ============================================================ SPLIT */
   .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
   .split.rev .split-media{order:2}
   .split-media img{border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--line)}
   .feature-list{list-style:none;margin-top:24px}
   .feature-list li{display:flex;gap:14px;margin-bottom:18px;align-items:flex-start}
-  .feature-list .fi{
-    flex-shrink:0;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
-    background:linear-gradient(135deg,var(--fire-1),var(--fire-3));color:#fff;font-weight:800;font-size:.85rem;
-  }
+  .feature-list .fi{flex-shrink:0;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--fire-1),var(--fire-3));color:#fff;font-weight:800;font-size:.85rem}
   .feature-list strong{color:#fff;display:block;font-size:.98rem}
   .feature-list span{font-size:.9rem;color:var(--txt-2)}
 
   /* ============================================================ TABLE */
   .table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--line);background:var(--bg-1)}
   table{width:100%;border-collapse:collapse;font-size:.92rem;min-width:520px}
-  thead{background:linear-gradient(90deg,rgba(255,77,0,.15),rgba(255,184,0,.08))}
+  thead{background:linear-gradient(90deg,rgba(232,93,4,.15),rgba(11,114,133,.08))}
   th{text-align:left;padding:16px 20px;color:#fff;font-weight:700;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase}
   td{padding:14px 20px;border-top:1px solid var(--line);color:var(--txt-1)}
   tbody tr:hover{background:rgba(255,255,255,.03)}
@@ -216,76 +145,44 @@
 
   /* ============================================================ TIMELINE */
   .timeline{position:relative;max-width:820px;margin:0 auto;padding-left:40px}
-  .timeline::before{
-    content:"";position:absolute;left:12px;top:8px;bottom:8px;width:2px;
-    background:linear-gradient(var(--fire-1),var(--fire-3),transparent);
-  }
+  .timeline::before{content:"";position:absolute;left:12px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--fire-1),var(--fire-3),transparent)}
   .tl-item{position:relative;margin-bottom:34px}
-  .tl-item::before{
-    content:"";position:absolute;left:-34px;top:6px;width:16px;height:16px;border-radius:50%;
-    background:var(--bg-0);border:3px solid var(--fire-2);box-shadow:0 0 0 4px rgba(255,122,0,.12);
-  }
+  .tl-item::before{content:"";position:absolute;left:-34px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--bg-0);border:3px solid var(--fire-2);box-shadow:0 0 0 4px rgba(232,93,4,.12)}
   .tl-item h4{margin-bottom:4px}
   .tl-item p{font-size:.92rem;color:var(--txt-2)}
 
   /* ============================================================ ACCORDION */
   .acc{border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;margin-bottom:12px;background:var(--bg-1)}
-  .acc-head{
-    width:100%;text-align:left;background:none;border:0;color:#fff;font-family:inherit;
-    padding:18px 22px;font-size:1rem;font-weight:600;cursor:pointer;
-    display:flex;justify-content:space-between;align-items:center;gap:16px;transition:.2s;
-  }
+  .acc-head{width:100%;text-align:left;background:none;border:0;color:#fff;font-family:inherit;padding:18px 22px;font-size:1rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:.2s}
   .acc-head:hover{background:rgba(255,255,255,.03)}
   .acc-head .plus{font-size:1.4rem;color:var(--fire-2);transition:.3s;flex-shrink:0;font-weight:300}
   .acc.open .acc-head .plus{transform:rotate(45deg)}
   .acc-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
   .acc-body-inner{padding:0 22px 22px;font-size:.93rem;color:var(--txt-2)}
-  .acc.open{border-color:rgba(255,122,0,.35)}
+  .acc.open{border-color:rgba(232,93,4,.35)}
 
-  /* ============================================================ BADGES / CHIPS */
-  .chip{
-    display:inline-block;padding:5px 12px;border-radius:100px;font-size:.75rem;font-weight:600;
-    background:rgba(255,122,0,.12);color:var(--fire-3);border:1px solid rgba(255,122,0,.25);margin:3px 4px 3px 0;
-  }
+  /* ============================================================ CHIPS */
+  .chip{display:inline-block;padding:5px 12px;border-radius:100px;font-size:.75rem;font-weight:600;background:rgba(232,93,4,.12);color:var(--fire-3);border:1px solid rgba(232,93,4,.25);margin:3px 4px 3px 0}
   .chip.ok{background:rgba(34,197,94,.12);color:#4ADE80;border-color:rgba(34,197,94,.3)}
-  .chip.info{background:rgba(59,130,246,.12);color:#60A5FA;border-color:rgba(59,130,246,.3)}
+  .chip.info{background:rgba(11,114,133,.15);color:#22D3EE;border-color:rgba(11,114,133,.3)}
+  .chip.new{background:rgba(232,93,4,.15);color:#FFBA08;border-color:rgba(232,93,4,.4)}
 
-  /* ============================================================ PROG HIGHLIGHT */
-  .prog-section{
-    background:linear-gradient(180deg,var(--bg-0),var(--bg-1));
-    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  }
-  .prog-banner{
-    background:linear-gradient(135deg,rgba(255,61,0,.14),rgba(255,184,0,.06));
-    border:1px solid rgba(255,122,0,.28);border-radius:var(--radius);
-    padding:24px 28px;margin-bottom:34px;display:flex;gap:20px;align-items:center;flex-wrap:wrap;
-  }
+  /* ============================================================ PROG */
+  .prog-section{background:linear-gradient(180deg,var(--bg-0),var(--bg-1));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .prog-banner{background:linear-gradient(135deg,rgba(232,93,4,.14),rgba(11,114,133,.06));border:1px solid rgba(232,93,4,.28);border-radius:var(--radius);padding:24px 28px;margin-bottom:34px;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
   .prog-banner .big{font-size:2.2rem}
   .prog-banner p{margin:0;font-size:.98rem;color:var(--txt-1)}
 
   /* ============================================================ RESOURCES */
-  .res-card{
-    display:flex;gap:16px;align-items:flex-start;padding:20px;
-    background:var(--bg-1);border:1px solid var(--line);border-radius:var(--radius-sm);
-    transition:.25s;
-  }
-  .res-card:hover{border-color:rgba(255,122,0,.35);transform:translateX(4px)}
+  .res-card{display:flex;gap:16px;align-items:flex-start;padding:20px;background:var(--bg-1);border:1px solid var(--line);border-radius:var(--radius-sm);transition:.25s}
+  .res-card:hover{border-color:rgba(232,93,4,.35);transform:translateX(4px)}
   .res-card .rc-icon{font-size:1.6rem;flex-shrink:0}
   .res-card h4{margin-bottom:3px;font-size:1rem}
   .res-card p{font-size:.85rem;color:var(--txt-2);margin:0}
-  .res-card code{
-    display:inline-block;margin-top:6px;font-size:.78rem;padding:3px 9px;border-radius:6px;
-    background:rgba(255,255,255,.06);color:var(--fire-3);font-family:monospace;
-  }
+  .res-card code{display:inline-block;margin-top:6px;font-size:.78rem;padding:3px 9px;border-radius:6px;background:rgba(255,255,255,.06);color:var(--fire-3);font-family:monospace}
 
-  /* ============================================================ CTA FINAL */
-  .cta-final{
-    text-align:center;padding:80px 40px;border-radius:24px;
-    background:
-      radial-gradient(500px 300px at 50% 0%,rgba(255,77,0,.22),transparent 70%),
-      linear-gradient(160deg,var(--bg-2),var(--bg-1));
-    border:1px solid var(--line);position:relative;overflow:hidden;
-  }
+  /* ============================================================ CTA */
+  .cta-final{text-align:center;padding:80px 40px;border-radius:24px;background:radial-gradient(500px 300px at 50% 0%,rgba(232,93,4,.22),transparent 70%),linear-gradient(160deg,var(--bg-2),var(--bg-1));border:1px solid var(--line);position:relative;overflow:hidden}
   .cta-final h2{font-size:clamp(1.8rem,4vw,2.6rem)}
   .cta-final p{max-width:600px;margin:0 auto 30px;color:var(--txt-2)}
 
@@ -302,19 +199,13 @@
   /* ============================================================ RESPONSIVE */
   @media(max-width:960px){
     .hero-inner{grid-template-columns:1fr;gap:40px}
-    .hero-card{max-width:480px;margin:0 auto}
+    .hero-card{max-width:400px;margin:0 auto}
     .split{grid-template-columns:1fr;gap:36px}
     .split.rev .split-media{order:0}
   }
   @media(max-width:820px){
     .burger{display:block}
-    .nav-links{
-      position:fixed;top:var(--nav-h);left:0;right:0;
-      flex-direction:column;align-items:stretch;gap:4px;
-      background:rgba(6,7,15,.98);backdrop-filter:blur(20px);
-      padding:20px;border-bottom:1px solid var(--line);
-      transform:translateY(-120%);transition:.35s;max-height:calc(100vh - var(--nav-h));overflow-y:auto;
-    }
+    .nav-links{position:fixed;top:var(--nav-h);left:0;right:0;flex-direction:column;align-items:stretch;gap:4px;background:rgba(6,7,15,.98);backdrop-filter:blur(20px);padding:20px;border-bottom:1px solid var(--line);transform:translateY(-120%);transition:.35s;max-height:calc(100vh - var(--nav-h));overflow-y:auto}
     .nav-links.open{transform:translateY(0)}
     .nav-links a{padding:14px 16px;font-size:.95rem}
     section{padding:64px 0}
@@ -339,7 +230,7 @@
       <li><a href="#equipo">El Equipo</a></li>
       <li><a href="#programacion">Programación</a></li>
       <li><a href="#recursos">Recursos</a></li>
-      <li><a href="#glosario" class="cta">Glosario</a></li>
+      <li><a href="programacion.html" class="cta">Guía Avanzada</a></li>
     </ul>
   </div>
 </nav>
@@ -364,12 +255,13 @@
         <div class="hero-stat"><strong>37700</strong><span>Nuestro Equipo</span></div>
         <div class="hero-stat"><strong>12–18</strong><span>Años de Edad</span></div>
         <div class="hero-stat"><strong>45cm³</strong><span>Tamaño Máx. Robot</span></div>
-        <div class="hero-stat"><strong>DECODE</strong><span>Temporada 25–26</span></div>
+        <div class="hero-stat"><strong>BIOBUZZ</strong><span>Temporada 26–27</span></div>
       </div>
     </div>
     <div class="hero-card reveal">
-      <span class="hero-badge">2025 · 2026</span>
-      <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" alt="Estudiantes trabajando en robótica" loading="lazy">
+      <span class="hero-badge">2026 · 2027</span>
+      <!-- LOGO DEL EQUIPO: Reemplaza este src con la ruta de tu logo real, ej. "img/logo-volkaniks.png" -->
+      <img src="https://via.placeholder.com/400x400/0A1628/E85D04?text=VOLKANIKS+37700" alt="Logo de Volkaniks Robotics 37700">
     </div>
   </div>
 </header>
@@ -389,7 +281,8 @@
 
     <div class="split reveal">
       <div class="split-media">
-        <img src="https://images.unsplash.com/photo-1561144257-e32e8efc6c4f?w=800&q=80" alt="Competencia de robótica" loading="lazy">
+        <!-- Imagen relacionada con FIRST: estudiantes en competencia -->
+        <img src="https://images.unsplash.com/photo-1561144257-e32e8efc6c4f?w=800&q=80" alt="Estudiantes en competencia de robótica FIRST" loading="lazy">
       </div>
       <div>
         <h3>Una misión global</h3>
@@ -429,9 +322,9 @@
         <p style="font-size:.85rem;margin-bottom:8px"><strong style="color:#fff">9–14 años</strong></p>
         <p>Robótica con LEGO Mindstorms y proyectos de innovación.</p>
       </div>
-      <div class="card" style="border-color:rgba(255,122,0,.5);box-shadow:0 0 40px -20px var(--fire-glow)">
+      <div class="card" style="border-color:rgba(232,93,4,.5);box-shadow:0 0 40px -20px var(--fire-glow)">
         <div class="card-icon">⚡</div>
-        <h4>FTC <span class="chip">Aquí estás</span></h4>
+        <h4>FTC <span class="chip new">Aquí estás</span></h4>
         <p style="font-size:.85rem;margin-bottom:8px"><strong style="color:#fff">12–18 años</strong></p>
         <p>Robótica modular intermedia. Competencia por alianzas.</p>
       </div>
@@ -462,17 +355,17 @@
       <div class="card">
         <div class="card-icon">📦</div>
         <h3>Tamaño del Robot</h3>
-        <p>Debe caber dentro de un cubo de <strong style="color:#fff">45 centímetros</strong> al inicio de cada partida. Esto fomenta el diseño compacto y eficiente.</p>
+        <p>Debe caber dentro de un cubo de <strong style="color:#fff">45 centímetros</strong> al inicio de cada partida.</p>
       </div>
       <div class="card">
         <div class="card-icon">🧩</div>
         <h3>Plataforma Modular</h3>
-        <p>Los equipos usan sistemas de construcción reutilizables (como REV o goBILDA) que permiten iterar rápidamente entre temporadas.</p>
+        <p>Los equipos usan sistemas de construcción reutilizables (como REV o goBILDA) que permiten iterar rápidamente.</p>
       </div>
       <div class="card">
         <div class="card-icon">🤝</div>
         <h3>Trabajo por Alianzas</h3>
-        <p>Durante las partidas, <strong style="color:#fff">dos equipos</strong> forman una alianza para enfrentarse a otra alianza. La colaboración es clave.</p>
+        <p>Durante las partidas, <strong style="color:#fff">dos equipos</strong> forman una alianza para enfrentarse a otra alianza.</p>
       </div>
       <div class="card">
         <div class="card-icon">📅</div>
@@ -482,57 +375,63 @@
       <div class="card">
         <div class="card-icon">🏆</div>
         <h3>Premios</h3>
-        <p>No solo importa ganar partidas: existen premios por <em>Inspire Award</em>, diseño, innovación, control, documentación y más.</p>
+        <p>Existen premios por <em>Inspire Award</em>, diseño, innovación, control, documentación y más.</p>
       </div>
       <div class="card">
         <div class="card-icon">📓</div>
         <h3>Engineering Notebook</h3>
-        <p>Cada equipo documenta todo su proceso: ideas, bocetos, iteraciones y aprendizajes. Es fundamental para los premios.</p>
+        <p>Cada equipo documenta todo su proceso: ideas, bocetos, iteraciones y aprendizajes.</p>
       </div>
     </div>
 
     <!-- Fases de la partida -->
-    <h3 style="text-align:center;margin:70px 0 30px" class="reveal">Las 3 fases de una partida</h3>
+    <h3 style="text-align:center;margin:70px 0 30px" class="reveal">Las fases de una partida</h3>
     <div class="grid g-3 reveal">
       <div class="card" style="border-top:3px solid var(--fire-1)">
         <div class="card-icon">🧠</div>
         <h4>Autónoma</h4>
         <p style="font-size:2rem;font-family:Orbitron;color:#fff;line-height:1;margin:8px 0">30s</p>
-        <p>El robot se mueve solo, sin control humano. Todo depende del código que se haya programado antes.</p>
+        <p>El robot se mueve solo, sin control humano. Todo depende del código programado previamente.</p>
       </div>
       <div class="card" style="border-top:3px solid var(--fire-2)">
         <div class="card-icon">🎮</div>
-        <h4>TeleOp</h4>
+        <h4>TeleOp <span class="chip">Incluye EndGame</span></h4>
         <p style="font-size:2rem;font-family:Orbitron;color:#fff;line-height:1;margin:8px 0">2 min</p>
-        <p>Los conductores controlan el robot con gamepads en tiempo real. Estrategia y coordinación en vivo.</p>
+        <p>Los conductores controlan el robot con gamepads en tiempo real. <strong style="color:#fff">Los últimos 30 segundos son el EndGame</strong>, donde se realiza una acción final para puntos extra. El EndGame es parte del TeleOp.</p>
       </div>
       <div class="card" style="border-top:3px solid var(--fire-3)">
         <div class="card-icon">🔥</div>
         <h4>End Game</h4>
         <p style="font-size:2rem;font-family:Orbitron;color:#fff;line-height:1;margin:8px 0">30s</p>
-        <p>Los últimos 30 segundos. El robot realiza una acción final para puntos extra. ¡Todo se decide aquí!</p>
+        <p>Los últimos 30 segundos del TeleOp. El robot realiza una acción final para puntos extra. <strong style="color:#fff">Es la fase final del período de control manual.</strong></p>
       </div>
     </div>
 
     <!-- Temporada actual -->
     <div class="split reveal" style="margin-top:80px">
       <div class="split-media">
-        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" alt="Robots y tecnología" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" alt="Tecnología y robótica" loading="lazy">
       </div>
       <div>
-        <span class="eyebrow">Temporada 2025–2026</span>
-        <h3 style="margin-top:12px">DECODE <span style="color:var(--txt-2);font-weight:400;font-size:.9rem">presented by RTX</span></h3>
+        <span class="eyebrow">Temporada 2026–2027</span>
+        <h3 style="margin-top:12px">BIOBUZZ <span style="color:var(--txt-2);font-weight:400;font-size:.9rem">presented by RTX</span></h3>
         <p>
-          La temporada actual tiene temática de <strong style="color:#fff">arqueología y exploración</strong>.
-          Los equipos deben recolectar, disparar y alinear "artefactos" (pelotas verdes y moradas)
-          mientras gestionan compuertas y zonas de puntuación.
+          La temporada actual, parte del programa <strong style="color:#fff">FIRST CANOPY</strong>,
+          tiene temática de <strong style="color:#fff">biodiversidad y el mundo natural</strong>.
+          El elemento de puntuación son <strong style="color:#fff">"Pollen"</strong> (pelotas de
+          plástico de ~3 pulgadas de diámetro). Los robots deberán recolectar, transportar y
+          anotar el polen en un desafío inspirado en los ecosistemas.
         </p>
         <div style="margin-top:18px">
-          <span class="chip">🟢 Artefactos verdes</span>
-          <span class="chip">🟣 Artefactos morados</span>
-          <span class="chip">🎯 Alineación</span>
-          <span class="chip">🚪 Compuertas</span>
+          <span class="chip">🌿 Biodiversidad</span>
+          <span class="chip">🌼 Pollen</span>
+          <span class="chip">🤖 Intake múltiple</span>
+          <span class="chip">🧭 Navegación autónoma</span>
         </div>
+        <p style="margin-top:16px;font-size:.88rem;color:var(--txt-2)">
+          El Kickoff oficial fue el <strong style="color:#fff">12 de septiembre de 2026</strong>.
+          Más de 120,000 estudiantes de todo el mundo participan esta temporada.
+        </p>
       </div>
     </div>
   </div>
@@ -546,70 +445,105 @@
       <h2>Áreas del <span class="grad">Equipo</span></h2>
       <p class="lead">
         Un equipo de FTC se divide en dos grandes ramas: el <strong style="color:#fff">lado del robot</strong>
-        (técnico) y el <strong style="color:#fff">lado de logística</strong> (no técnico). Aquí te explicamos cada una.
+        (técnico) y el <strong style="color:#fff">lado de logística</strong> (no técnico).
       </p>
     </div>
 
-    <!-- Lado técnico -->
+    <!-- ÁREAS ACTUALES DESTACADAS -->
+    <div class="prog-banner reveal" style="margin-bottom:40px">
+      <span class="big">⭐</span>
+      <div>
+        <strong style="color:#fff;font-size:1.05rem">Áreas activas actualmente en Volkaniks 37700</strong>
+        <p style="margin-top:6px">
+          Por ahora, el equipo está enfocado en estas 4 áreas principales. Las demás se irán
+          integrando conforme crezcamos. Si quieres profundizar en alguna, consulta la
+          <a href="programacion.html">Guía de Programación</a> o pregunta a tus compañeros.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid g-4 reveal" style="margin-bottom:70px">
+      <div class="card" style="border-color:rgba(232,93,4,.6);box-shadow:0 0 40px -20px var(--fire-glow)">
+        <div class="card-icon">💻</div>
+        <h4>Programación <span class="chip new">Activa</span></h4>
+        <p>Escribir el código que controla motores, sensores y servos. Crear rutinas autónomas y de TeleOp.</p>
+      </div>
+      <div class="card" style="border-color:rgba(232,93,4,.6);box-shadow:0 0 40px -20px var(--fire-glow)">
+        <div class="card-icon">🔧</div>
+        <h4>Mecánica <span class="chip new">Activa</span></h4>
+        <p>Fabricar y ensamblar las piezas del robot. Construir los mecanismos, chasis y sistemas de recolección.</p>
+      </div>
+      <div class="card" style="border-color:rgba(232,93,4,.6);box-shadow:0 0 40px -20px var(--fire-glow)">
+        <div class="card-icon">📣</div>
+        <h4>Negocios / Comunicación <span class="chip new">Activa</span></h4>
+        <p>Redes sociales, sitio web, boletines y envíos para premios. La cara pública del equipo.</p>
+      </div>
+      <div class="card" style="border-color:rgba(232,93,4,.6);box-shadow:0 0 40px -20px var(--fire-glow)">
+        <div class="card-icon">💰</div>
+        <h4>Finanzas / Sponsors <span class="chip new">Activa</span></h4>
+        <p>Búsqueda de patrocinios, gestión de presupuesto y relación con aliados del equipo.</p>
+      </div>
+    </div>
+
+    <!-- Todas las áreas (incluyendo las futuras) -->
     <h3 class="reveal" style="margin-bottom:22px;display:flex;align-items:center;gap:12px">
       <span style="font-size:1.6rem">🤖</span> Lado del Robot <span style="color:var(--txt-2);font-weight:400;font-size:.85rem">(Técnico)</span>
     </h3>
     <div class="grid g-4 reveal" style="margin-bottom:70px">
       <div class="card">
         <div class="card-icon">✏️</div>
-        <h4>Diseño</h4>
+        <h4>Diseño <span class="chip info">Futura</span></h4>
         <p>Diseñar el robot con bocetos o software CAD (Onshape, Fusion 360). Prototipar mecanismos antes de fabricarlos.</p>
       </div>
       <div class="card">
         <div class="card-icon">🔧</div>
-        <h4>Mecánica</h4>
+        <h4>Mecánica <span class="chip new">Activa</span></h4>
         <p>Fabricar y ensamblar las piezas del robot. Construir los mecanismos, chasis y sistemas de recolección.</p>
       </div>
       <div class="card">
         <div class="card-icon">🔌</div>
-        <h4>Eléctrica</h4>
+        <h4>Electrónica <span class="chip info">Futura</span></h4>
         <p>Gestionar el tablero eléctrico, cableado, baterías, Control Hub y todas las conexiones del robot.</p>
       </div>
-      <div class="card" style="border-color:rgba(255,122,0,.5);box-shadow:0 0 40px -20px var(--fire-glow)">
+      <div class="card">
         <div class="card-icon">💻</div>
-        <h4>Programación <span class="chip">Tu área</span></h4>
+        <h4>Programación <span class="chip new">Activa</span></h4>
         <p>Escribir el código que controla motores, sensores y servos. Crear rutinas autónomas y de TeleOp.</p>
       </div>
     </div>
 
-    <!-- Lado logístico -->
     <h3 class="reveal" style="margin-bottom:22px;display:flex;align-items:center;gap:12px">
       <span style="font-size:1.6rem">📋</span> Lado de Logística <span style="color:var(--txt-2);font-weight:400;font-size:.85rem">(No Técnico)</span>
     </h3>
     <div class="grid g-3 reveal">
       <div class="card">
         <div class="card-icon">📣</div>
-        <h4>Negocios / Comunicación</h4>
+        <h4>Negocios / Comunicación <span class="chip new">Activa</span></h4>
         <p>Redes sociales, sitio web, boletines y envíos para premios. La cara pública del equipo.</p>
       </div>
       <div class="card">
         <div class="card-icon">🎥</div>
-        <h4>Audiovisual</h4>
+        <h4>Audiovisual <span class="chip info">Futura</span></h4>
         <p>Fotografía, video, diseño gráfico y documentación visual de toda la temporada.</p>
       </div>
       <div class="card">
         <div class="card-icon">🌍</div>
-        <h4>Alcance Comunitario</h4>
+        <h4>Alcance Comunitario <span class="chip info">Futura</span></h4>
         <p>Eventos para difundir FIRST y STEM en la comunidad. Outreach y vinculación.</p>
       </div>
       <div class="card">
         <div class="card-icon">♟️</div>
-        <h4>Estrategia</h4>
+        <h4>Estrategia <span class="chip info">Futura</span></h4>
         <p>Analizar datos de partidas, scouts de otros equipos y seleccionar aliados para playoffs.</p>
       </div>
       <div class="card">
         <div class="card-icon">📓</div>
-        <h4>Documentación</h4>
+        <h4>Documentación <span class="chip info">Futura</span></h4>
         <p>Mantener el Cuaderno de Ingeniería actualizado. Registra todo el proceso del equipo.</p>
       </div>
       <div class="card">
         <div class="card-icon">💰</div>
-        <h4>Finanzas / Sponsors</h4>
+        <h4>Finanzas / Sponsors <span class="chip new">Activa</span></h4>
         <p>Búsqueda de patrocinios, gestión de presupuesto y relación con aliados del equipo.</p>
       </div>
     </div>
@@ -618,18 +552,19 @@
     <div class="table-wrap reveal" style="margin-top:60px">
       <table>
         <thead>
-          <tr><th>Subequipo</th><th>Rama</th><th>Responsabilidad Principal</th></tr>
+          <tr><th>Subárea</th><th>Rama</th><th>Responsabilidad Principal</th><th>Estado</th></tr>
         </thead>
         <tbody>
-          <tr><td><strong>Diseño</strong></td><td>Técnico</td><td>Bocetos y CAD del robot</td></tr>
-          <tr><td><strong>Mecánica</strong></td><td>Técnico</td><td>Fabricación y ensamble</td></tr>
-          <tr><td><strong>Eléctrica</strong></td><td>Técnico</td><td>Cableado y tablero eléctrico</td></tr>
-          <tr><td><strong>Programación</strong></td><td>Técnico</td><td>Código del robot (autónomo + TeleOp)</td></tr>
-          <tr><td><strong>Comunicación</strong></td><td>Logística</td><td>Redes y presencia pública</td></tr>
-          <tr><td><strong>Audiovisual</strong></td><td>Logística</td><td>Foto, video y diseño</td></tr>
-          <tr><td><strong>Outreach</strong></td><td>Logística</td><td>Eventos comunitarios</td></tr>
-          <tr><td><strong>Estrategia</strong></td><td>Logística</td><td>Análisis y selección de alianzas</td></tr>
-          <tr><td><strong>Documentación</strong></td><td>Logística</td><td>Cuaderno de Ingeniería</td></tr>
+          <tr><td><strong>Programación</strong></td><td>Técnico</td><td>Código del robot (autónomo + TeleOp)</td><td><span class="chip new">Activa</span></td></tr>
+          <tr><td><strong>Mecánica</strong></td><td>Técnico</td><td>Fabricación y ensamble</td><td><span class="chip new">Activa</span></td></tr>
+          <tr><td><strong>Negocios / Comunicación</strong></td><td>Logística</td><td>Redes y presencia pública</td><td><span class="chip new">Activa</span></td></tr>
+          <tr><td><strong>Finanzas / Sponsors</strong></td><td>Logística</td><td>Patrocinios y presupuesto</td><td><span class="chip new">Activa</span></td></tr>
+          <tr><td><strong>Diseño</strong></td><td>Técnico</td><td>Bocetos y CAD del robot</td><td><span class="chip info">Futura</span></td></tr>
+          <tr><td><strong>Electrónica</strong></td><td>Técnico</td><td>Cableado y tablero eléctrico</td><td><span class="chip info">Futura</span></td></tr>
+          <tr><td><strong>Audiovisual</strong></td><td>Logística</td><td>Foto, video y diseño</td><td><span class="chip info">Futura</span></td></tr>
+          <tr><td><strong>Outreach</strong></td><td>Logística</td><td>Eventos comunitarios</td><td><span class="chip info">Futura</span></td></tr>
+          <tr><td><strong>Estrategia</strong></td><td>Logística</td><td>Análisis y selección de alianzas</td><td><span class="chip info">Futura</span></td></tr>
+          <tr><td><strong>Documentación</strong></td><td>Logística</td><td>Cuaderno de Ingeniería</td><td><span class="chip info">Futura</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -649,17 +584,28 @@
     </div>
 
     <div class="split reveal">
-      <div class="split-media">
-        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80" alt="Equipo de robótica trabajando" loading="lazy">
+      <div class="split-media" style="text-align:center">
+        <!-- Imagen del capítulo 4: Puedes reemplazarla con una foto del equipo -->
+        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80" alt="Equipo Volkaniks trabajando" loading="lazy">
+        <p style="margin-top:12px;font-size:.78rem;color:var(--txt-2)">
+          Reemplaza esta imagen con una foto real del equipo Volkaniks 37700.
+        </p>
       </div>
       <div>
-        <div class="grid g-2" style="gap:16px">
+        <h3 style="margin-bottom:16px">Identidad: El Xoloitzcuintle Volcánico</h3>
+        <p>
+          Nuestro logo no es un volcán cualquiera: es un <strong style="color:#fff">Xoloitzcuintle</strong>,
+          la raza de perro sagrada de los antiguos mexicanos, fusionada con elementos volcánicos
+          y de ingeniería. Representa nuestras raíces, nuestra identidad poblana y el espíritu
+          de innovación que nos define. Nuestro lema lo resume: <em style="color:var(--fire-3)">"De nuestras raíces nace el futuro"</em>.
+        </p>
+        <div class="grid g-2" style="gap:16px;margin-top:24px">
           <div class="card" style="padding:20px">
             <div style="font-family:Orbitron;font-size:1.6rem;color:var(--fire-2);line-height:1">#37700</div>
             <p style="font-size:.85rem;margin-top:4px">Número oficial del equipo</p>
           </div>
           <div class="card" style="padding:20px">
-            <div style="font-family:Orbitron;font-size:1.6rem;color:var(--fire-2);line-height:1">37</div>
+            <div style="font-family:Orbitron;font-size:1.6rem;color:var(--fire-2);line-height:1">+100</div>
             <p style="font-size:.85rem;margin-top:4px">Equipos FTC en México</p>
           </div>
           <div class="card" style="padding:20px">
@@ -667,21 +613,50 @@
             <p style="font-size:.85rem;margin-top:4px">Sede en Puebla, México</p>
           </div>
           <div class="card" style="padding:20px">
-            <div style="font-family:Orbitron;font-size:1.6rem;color:var(--fire-2);line-height:1">🌋</div>
-            <p style="font-size:.85rem;margin-top:4px">Identidad Volkaniks</p>
+            <div style="font-family:Orbitron;font-size:1.6rem;color:var(--fire-2);line-height:1">Rookie</div>
+            <p style="font-size:.85rem;margin-top:4px">Primera temporada</p>
           </div>
         </div>
-        <p style="margin-top:24px;font-size:.93rem;color:var(--txt-2)">
-          México cuenta con equipos de FTC distribuidos en distintas regiones: Puebla, Chihuahua,
-          Querétaro, Monterrey, CDMX y más. Volkaniks forma parte de esta comunidad y compite
-          en los eventos regionales de FTC.
+        <p style="margin-top:20px;font-size:.93rem;color:var(--txt-2)">
+          El equipo es de <strong style="color:#fff">reciente creación (septiembre de 2026)</strong>,
+          así que estamos en nuestra primera temporada como <strong style="color:#fff">rookies</strong>.
+          Ya tenemos algunos eventos destacados documentados en nuestro Instagram.
         </p>
-        <p style="margin-top:14px;font-size:.88rem;color:var(--txt-2);padding:14px 18px;background:rgba(255,122,0,.06);border-left:3px solid var(--fire-2);border-radius:8px">
-          💡 <strong style="color:#fff">Tip:</strong> Para conocer la historia específica, logros
-          y proyectos de Volkaniks 37700, pregunta a tus compañeros de mayor antigüedad o revisa
-          el Cuaderno de Ingeniería del equipo.
-        </p>
+        <div style="margin-top:18px">
+          <a href="https://www.instagram.com/volkaniksrobotics/" target="_blank" class="btn btn-primary" style="font-size:.9rem;padding:12px 22px">
+            📸 Síguenos en Instagram
+          </a>
+        </div>
       </div>
+    </div>
+
+    <!-- Evento Regional -->
+    <div class="reveal" style="margin-top:70px">
+      <div class="prog-banner">
+        <span class="big">🏁</span>
+        <div>
+          <strong style="color:#fff;font-size:1.1rem">Próximo evento: Torneo Regional FTC CDMX</strong>
+          <p style="margin-top:6px">
+            Competiremos como <strong style="color:#fff">rookies</strong> en el evento regional
+            del <strong style="color:#fff">27 y 28 de noviembre de 2026</strong> en la
+            <strong style="color:#fff">Universidad Tecmilenio Ferrería</strong>, Ciudad de México.
+          </p>
+          <p style="margin-top:8px;font-size:.88rem;color:var(--txt-2)">
+            📍 Av. de las Granjas #820, Col. Santa Bárbara, Alcaldía Azcapotzalco, C.P. 02230, CDMX.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buscador de eventos -->
+    <div class="reveal" style="margin-top:40px;text-align:center">
+      <h3 style="margin-bottom:16px">🔍 Buscador de Eventos FTC</h3>
+      <p style="color:var(--txt-2);margin-bottom:20px;font-size:.95rem">
+        Consulta los próximos eventos oficiales de FIRST Tech Challenge en México y el mundo.
+      </p>
+      <a href="https://ftc-events.firstinspires.org/" target="_blank" class="btn btn-primary" style="font-size:.9rem">
+        Ir al buscador oficial de eventos →
+      </a>
     </div>
   </div>
 </section>
@@ -690,12 +665,11 @@
 <section id="programacion" class="prog-section">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow">⭐ Extra para ti</span>
-      <h2>Guía de <span class="grad">Programación</span></h2>
+      <span class="eyebrow">⭐ Guía de Programación</span>
+      <h2>Área de <span class="grad">Programación</span></h2>
       <p class="lead">
-        Esta sección es especialmente para ti, ya que te integrarás al subequipo de programación
-        sin experiencia previa. <strong style="color:#fff">No te preocupes: todos empiezan desde cero</strong>,
-        y FTC está diseñado para que aprendas paso a paso.
+        Esta sección es para ti, que te integras al subequipo de programación.
+        Hemos dividido la guía en dos rutas según tu nivel de experiencia previa.
       </p>
     </div>
 
@@ -708,10 +682,10 @@
     </div>
 
     <!-- ¿Qué hace el subequipo? -->
-    <div class="grid g-2 reveal" style="margin-bottom:60px">
+    <div class="grid g-2 reveal" style="margin-bottom:50px">
       <div class="card">
         <div class="card-icon">🎯</div>
-        <h3>¿Qué hace el subequipo de programación?</h3>
+        <h3>¿Qué hace el subárea de programación?</h3>
         <p>
           Creamos la <strong style="color:#fff">lógica que conecta los controles del operador con
           los motores y sensores del robot</strong>. Escribimos tanto las rutinas autónomas
@@ -720,108 +694,132 @@
       </div>
       <div class="card">
         <div class="card-icon">🧠</div>
-        <h3>¿Qué necesitas saber para empezar?</h3>
-        <p><strong style="color:#fff">Absolutamente nada de programación.</strong> Solo necesitas:</p>
+        <h3>Herramientas de programación en FTC</h3>
+        <p>FIRST ofrece <strong style="color:#fff">tres herramientas</strong> para programar tu robot:</p>
         <ul>
-          <li>Curiosidad y ganas de aprender</li>
-          <li>Paciencia (el código no siempre funciona a la primera)</li>
-          <li>Ganas de preguntar sin miedo</li>
-          <li>Acceso a una computadora con navegador</li>
+          <li><strong style="color:#fff">Blocks:</strong> Visual (arrastrar y soltar). Ideal para empezar.</li>
+          <li><strong style="color:#fff">OnBot Java:</strong> Texto (Java). Intermedio.</li>
+          <li><strong style="color:#fff">Android Studio:</strong> Java profesional. Avanzado.</li>
         </ul>
-      </div>
-    </div>
-
-    <!-- Herramientas -->
-    <h3 class="reveal" style="text-align:center;margin-bottom:30px">Herramientas de programación en FTC</h3>
-    <div class="grid g-3 reveal" style="margin-bottom:60px">
-      <div class="card" style="border-color:rgba(255,122,0,.5);box-shadow:0 0 40px -20px var(--fire-glow)">
-        <div class="card-icon">🧩</div>
-        <h4>Blocks <span class="chip ok">Recomendado</span></h4>
-        <p style="font-size:.85rem;margin-bottom:8px"><strong style="color:#fff">Visual</strong> · Principiantes</p>
-        <p>Herramienta visual que funciona en el navegador. Arrastras bloques de colores y los conectas como un rompecabezas. <strong style="color:#fff">No necesitas escribir código.</strong></p>
-      </div>
-      <div class="card">
-        <div class="card-icon">☕</div>
-        <h4>OnBot Java</h4>
-        <p style="font-size:.85rem;margin-bottom:8px"><strong style="color:#fff">Texto</strong> · Intermedio</p>
-        <p>Programación en Java directamente desde el navegador. El siguiente paso natural después de Blocks.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🚀</div>
-        <h4>Android Studio</h4>
-        <p style="font-size:.85rem;margin-bottom:8px"><strong style="color:#fff">Texto profesional</strong> · Avanzado</p>
-        <p>Entorno profesional de Java para proyectos grandes. Se usa cuando el equipo ya domina lo básico.</p>
-      </div>
-    </div>
-
-    <!-- ¿Qué es un Op Mode? -->
-    <div class="split reveal" style="margin-bottom:70px">
-      <div class="split-media">
-        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80" alt="Código de programación" loading="lazy">
-      </div>
-      <div>
-        <span class="eyebrow">Concepto clave</span>
-        <h3 style="margin-top:12px">¿Qué es un "Op Mode"?</h3>
-        <p>
-          Un <strong style="color:#fff">Op Mode</strong> (Operational Mode) es simplemente un
-          <strong style="color:#fff">programa</strong> que le dice al robot qué hacer. Existen
-          dos tipos principales:
+        <p style="margin-top:10px;font-size:.88rem;color:var(--txt-2)">
+          <strong style="color:var(--fire-3)">Nota:</strong> Dado que necesitamos nivelar
+          rápido al equipo, recomendamos <strong style="color:#fff">saltar directamente a Android Studio</strong>
+          si ya tienes bases de Java, o empezar con Blocks y transicionar rápido.
         </p>
-        <ul class="feature-list" style="margin-top:20px">
-          <li>
-            <span class="fi">T</span>
-            <div>
-              <strong>TeleOp Op Mode</strong>
-              <span>El robot responde a los controles del conductor en tiempo real durante los 2 minutos de TeleOp.</span>
-            </div>
-          </li>
-          <li>
-            <span class="fi">A</span>
-            <div>
-              <strong>Autonomous Op Mode</strong>
-              <span>El robot se mueve solo durante los primeros 30 segundos de la partida, sin intervención humana.</span>
-            </div>
-          </li>
-        </ul>
       </div>
     </div>
 
-    <!-- Ruta de aprendizaje -->
-    <h3 class="reveal" style="text-align:center;margin-bottom:30px">Tu ruta de aprendizaje recomendada</h3>
-    <div class="timeline reveal">
+    <!-- RUTA 1: Sin experiencia -->
+    <h3 class="reveal" style="margin:60px 0 30px;display:flex;align-items:center;gap:12px">
+      <span style="font-size:1.6rem">🟢</span> Ruta 1: Sin experiencia previa (empieza desde cero)
+    </h3>
+    <div class="prog-banner reveal" style="background:linear-gradient(135deg,rgba(34,197,94,.1),rgba(11,114,133,.05));border-color:rgba(34,197,94,.3)">
+      <span class="big">📘</span>
+      <div>
+        <strong style="color:#fff">Si nunca has programado, esta es tu ruta.</strong>
+        <p style="margin-top:4px">Recomendamos empezar con <strong style="color:#fff">Blocks</strong> para entender los conceptos básicos rápidamente, y luego dar el salto a <strong style="color:#fff">OnBot Java</strong> o <strong style="color:#fff">Android Studio</strong>.</p>
+      </div>
+    </div>
+
+    <div class="timeline reveal" style="margin-bottom:60px">
       <div class="tl-item">
         <h4>Paso 1 · Familiarízate con la interfaz de Blocks</h4>
         <p>Explora la herramienta visual. Revisa los tutoriales oficiales de FTC Docs para entender cómo se conectan los bloques.</p>
       </div>
       <div class="tl-item">
-        <h4>Paso 2 · Practica en un simulador virtual</h4>
-        <p>Usa <strong style="color:#fff">FTC SIM</strong> (gratuito) para programar robots virtuales <em>sin necesidad del robot físico</em>. Ideal para practicar desde casa.</p>
+        <h4>Paso 2 · Practica en el simulador virtual FTC SIM</h4>
+        <p>Usa <strong style="color:#fff">FTC SIM</strong> (gratuito) para programar robots virtuales <em>sin necesidad del robot físico</em>. Ideal para practicar desde casa. <a href="https://www.pixelpad.io/ftcsim" target="_blank" rel="noopener">Ir a FTC SIM →</a></p>
       </div>
       <div class="tl-item">
         <h4>Paso 3 · Tu primer Op Mode en el robot real</h4>
         <p>Con ayuda del subequipo, sube tu primer programa TeleOp al Control Hub. Hacer que un motor gire es tu primer gran logro.</p>
       </div>
       <div class="tl-item">
-        <h4>Paso 4 · Aprende a usar sensores</h4>
-        <p>Explora sensores de distancia, color, IMU (giroscopio). Aprende a leer datos y a reaccionar a ellos en tu código.</p>
+        <h4>Paso 4 · Salto directo a Android Studio (recomendado)</h4>
+        <p>Para nivelar rápido al equipo, te recomendamos <strong style="color:#fff">saltar directamente a Android Studio</strong> una vez que entiendas los conceptos básicos de Blocks. Aprenderás Java en el contexto real del robot, con la guía del subequipo.</p>
       </div>
       <div class="tl-item">
-        <h4>Paso 5 · Transición a OnBot Java</h4>
-        <p>Cuando te sientas cómodo con Blocks, empieza a explorar OnBot Java. El mismo código, pero escrito en texto.</p>
+        <h4>Paso 5 · Tu primer autónomo básico</h4>
+        <p>Aprende a programar un Op Mode autónomo que mueva el robot hacia adelante, gire y se detenga en una posición. Es el primer paso para competir en la fase autónoma.</p>
       </div>
     </div>
 
-    <!-- Simulador -->
-    <div class="prog-banner reveal" style="margin-top:60px">
+    <!-- RUTA 2: Con experiencia -->
+    <h3 class="reveal" style="margin:60px 0 30px;display:flex;align-items:center;gap:12px">
+      <span style="font-size:1.6rem">🔵</span> Ruta 2: Con experiencia previa en Java (nivelación avanzada)
+    </h3>
+    <div class="prog-banner reveal" style="background:linear-gradient(135deg,rgba(59,130,246,.1),rgba(11,114,133,.05));border-color:rgba(59,130,246,.3)">
+      <span class="big">☕</span>
+      <div>
+        <strong style="color:#fff">Si ya sabes programar en Java, esta es tu ruta.</strong>
+        <p style="margin-top:4px">Ya conoces la sintaxis y la POO. Ahora hay que aplicar esos conocimientos al contexto específico de FTC.</p>
+      </div>
+    </div>
+
+    <div class="grid g-2 reveal" style="margin-bottom:50px">
+      <div class="card">
+        <div class="card-icon">📦</div>
+        <h4>1. Estructura de un Op Mode</h4>
+        <p>Aprende la estructura de una clase OpMode en FTC: <code>@TeleOp</code>, <code>@Autonomous</code>, <code>runOpMode()</code>, <code>init()</code>, <code>loop()</code>, <code>waitForStart()</code>.</p>
+        <p style="margin-top:8px;font-size:.85rem;color:var(--fire-3)">
+          📖 <a href="https://ftc-docs.firstinspires.org/en/latest/programming_resources/tutorial_specific/android_studio/creating_op_modes/Creating-and-Running-an-Op-Mode-(Android-Studio).html" target="_blank" rel="noopener">Doc oficial: Crear un Op Mode →</a>
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎮</div>
+        <h4>2. Gamepad y control de motores</h4>
+        <p>Aprende a leer los joysticks y botones del gamepad (<code>gamepad1</code>, <code>gamepad2</code>) y a mapear esos valores a los motores del robot.</p>
+        <p style="margin-top:8px;font-size:.85rem;color:var(--fire-3)">
+          📖 <a href="https://ftc-docs.firstinspires.org/en/latest/programming_resources/tutorial_specific/android_studio/gamepad/Gamepad.html" target="_blank" rel="noopener">Doc oficial: Gamepad →</a>
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔧</div>
+        <h4>3. Hardware: motores, servos y sensores</h4>
+        <p>Aprende a declarar y configurar <code>DcMotor</code>, <code>Servo</code>, <code>ColorSensor</code>, <code>DistanceSensor</code> e <code>IMU</code> en el hardwareMap.</p>
+        <p style="margin-top:8px;font-size:.85rem;color:var(--fire-3)">
+          📖 <a href="https://ftc-docs.firstinspires.org/en/latest/hardware_and_software_configuration/index.html" target="_blank" rel="noopener">Doc oficial: Hardware →</a>
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🧭</div>
+        <h4>4. Encoders y movimiento preciso</h4>
+        <p>Usa encoders para medir distancia recorrida y controlar la velocidad. Aprende a calcular ticks por pulgada y a usar <code>setTargetPosition()</code>.</p>
+        <p style="margin-top:8px;font-size:.85rem;color:var(--fire-3)">
+          📖 <a href="https://ftc-docs.firstinspires.org/en/latest/programming_resources/encoders/Encoders.html" target="_blank" rel="noopener">Doc oficial: Encoders →</a>
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤖</div>
+        <h4>5. Tu primer autónomo básico</h4>
+        <p>Combina encoders + IMU para mover el robot en una trayectoria: avanzar X pulgadas, girar Y grados, avanzar Z pulgadas y detenerse.</p>
+        <p style="margin-top:8px;font-size:.85rem;color:var(--fire-3)">
+          📖 <a href="https://ftc-docs.firstinspires.org/en/latest/programming_resources/tutorial_specific/android_studio/autonomous/Autonomous.html" target="_blank" rel="noopener">Doc oficial: Autónomo →</a>
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏗️</div>
+        <h4>6. Road Runner (siguiente paso)</h4>
+        <p>Cuando domines el autónomo básico, aprende <strong style="color:#fff">Road Runner</strong>, la librería estándar de FTC para planificación de trayectorias. Es el siguiente nivel.</p>
+        <p style="margin-top:8px;font-size:.85rem;color:var(--fire-3)">
+          📖 <a href="https://rr.brott.dev/" target="_blank" rel="noopener">Documentación de Road Runner →</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- FTC SIM -->
+    <div class="prog-banner reveal" style="margin-top:50px">
       <span class="big">🖥️</span>
       <div>
         <strong style="color:#fff;font-size:1.05rem">FTC SIM — Simulador virtual gratuito</strong>
         <p style="margin-top:6px">
           FIRST Canada ofrece un simulador virtual gratuito que te permite programar robots
-          virtuales en Blocks <strong style="color:#fff">sin necesidad del robot físico</strong>.
-          Incluye robots pre-diseñados, desafíos progresivos, navegación por laberintos
-          y sensores virtuales. <span class="chip info">pixelpad.io/ftcsim</span>
+          virtuales <strong style="color:#fff">sin necesidad del robot físico</strong>.
+          Incluye robots pre-diseñados, desafíos progresivos y sensores virtuales.
         </p>
+        <a href="https://www.pixelpad.io/ftcsim" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:14px;font-size:.9rem">
+          Abrir FTC SIM →
+        </a>
       </div>
     </div>
 
@@ -834,6 +832,17 @@
       <div class="card"><div class="card-icon">4</div><h4>Documenta</h4><p>Anota cada bloque nuevo que uses. Te servirá después y ayudará al equipo.</p></div>
       <div class="card"><div class="card-icon">5</div><h4>Practica en el simulador</h4><p>Cuando no tengas el robot, usa FTC SIM para seguir aprendiendo.</p></div>
       <div class="card"><div class="card-icon">6</div><h4>Trabaja en equipo</h4><p>La programación en FTC es colaborativa. No estás solo en esto.</p></div>
+    </div>
+
+    <!-- Enlace a guía avanzada -->
+    <div class="reveal" style="text-align:center;margin-top:60px">
+      <div class="prog-banner" style="justify-content:center;text-align:center">
+        <div>
+          <strong style="color:#fff;font-size:1.1rem">📚 ¿Necesitas más detalle?</strong>
+          <p style="margin-top:6px">Tenemos una guía ampliada con documentación, ejemplos de código y siguientes pasos para programadores avanzados.</p>
+          <a href="programacion.html" class="btn btn-primary" style="margin-top:14px">Ir a la Guía Avanzada de Programación →</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -896,6 +905,38 @@
           <code>firstinspires.org</code>
         </div>
       </div>
+      <div class="res-card">
+        <span class="rc-icon">🎮</span>
+        <div>
+          <h4>Tutorial de Gamepad en FTC</h4>
+          <p>Aprende a mapear los controles del gamepad a los motores del robot.</p>
+          <code>ftc-docs.firstinspires.org/gamepad</code>
+        </div>
+      </div>
+      <div class="res-card">
+        <span class="rc-icon">🏗️</span>
+        <div>
+          <h4>Road Runner — Trayectorias</h4>
+          <p>Librería estándar para planificación de trayectorias autónomas avanzadas.</p>
+          <code>rr.brott.dev</code>
+        </div>
+      </div>
+      <div class="res-card">
+        <span class="rc-icon">📸</span>
+        <div>
+          <h4>Instagram de Volkaniks</h4>
+          <p>Sigue nuestras actualizaciones, eventos y avances de temporada.</p>
+          <code>@volkaniksrobotics</code>
+        </div>
+      </div>
+      <div class="res-card">
+        <span class="rc-icon">🔍</span>
+        <div>
+          <h4>Buscador de Eventos FTC</h4>
+          <p>Consulta los próximos eventos oficiales de FTC en México y el mundo.</p>
+          <code>ftc-events.firstinspires.org</code>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -917,7 +958,11 @@
         </div>
         <div class="acc">
           <button class="acc-head">¿Qué es TeleOp? <span class="plus">+</span></button>
-          <div class="acc-body"><div class="acc-body-inner">El período de 2 minutos donde los conductores controlan el robot manualmente con gamepads.</div></div>
+          <div class="acc-body"><div class="acc-body-inner">El período de 2 minutos donde los conductores controlan el robot manualmente con gamepads. <strong>Incluye el EndGame en los últimos 30 segundos.</strong></div></div>
+        </div>
+        <div class="acc">
+          <button class="acc-head">¿Qué es el EndGame? <span class="plus">+</span></button>
+          <div class="acc-body"><div class="acc-body-inner">Los últimos 30 segundos del período de TeleOp. El robot realiza una acción final para obtener puntos extra. <strong>Es parte del TeleOp, no una fase separada.</strong></div></div>
         </div>
         <div class="acc">
           <button class="acc-head">¿Qué es el Autónomo? <span class="plus">+</span></button>
@@ -980,7 +1025,7 @@
       <span class="brand-mark">🌋</span>
       <span>VOLKANIKS<small>FTC #37700 · PUEBLA</small></span>
     </div>
-    <p>Guía para nuevos miembros · Volkaniks Robotics 37700, Puebla, México.</p>
+    <p>Guía para nuevos miembros · Volkaniks Robotics 37700, Puebla, México · Temporada 2026-2027 BIOBUZZ.</p>
     <div class="foot-links">
       <a href="#first">FIRST</a>
       <a href="#ftc">FTC</a>
@@ -988,6 +1033,7 @@
       <a href="#programacion">Programación</a>
       <a href="#recursos">Recursos</a>
       <a href="#glosario">Glosario</a>
+      <a href="https://www.instagram.com/volkaniksrobotics/" target="_blank">Instagram</a>
     </div>
     <p style="margin-top:24px;font-size:.75rem;color:#4a5170">
       © <span id="year"></span> Volkaniks Robotics 37700 — FIRST Tech Challenge
@@ -1011,7 +1057,6 @@ burger.addEventListener('click', () => {
   navLinks.classList.toggle('open');
 });
 
-// Cerrar menú al hacer click en un enlace
 navLinks.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => navLinks.classList.remove('open'));
 });
@@ -1039,7 +1084,6 @@ document.querySelectorAll('.acc-head').forEach(btn => {
     const body = acc.querySelector('.acc-body');
     const isOpen = acc.classList.contains('open');
 
-    // Cerrar todos los del mismo contenedor
     acc.parentElement.querySelectorAll('.acc').forEach(a => {
       a.classList.remove('open');
       a.querySelector('.acc-body').style.maxHeight = null;
@@ -1053,12 +1097,12 @@ document.querySelectorAll('.acc-head').forEach(btn => {
 });
 
 /* ============================================================
-   AÑO DINÁMICO EN EL FOOTER
+   AÑO DINÁMICO
    ============================================================ */
 document.getElementById('year').textContent = new Date().getFullYear();
 
 /* ============================================================
-   SCROLL SUAVE (fallback para navegadores antiguos)
+   SCROLL SUAVE
    ============================================================ */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
